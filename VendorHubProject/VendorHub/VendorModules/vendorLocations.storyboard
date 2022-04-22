@@ -241,7 +241,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Item Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JcZ-WZ-rfD">
-                                <rect key="frame" x="105" y="419" width="177" height="34"/>
+                                <rect key="frame" x="105" y="439" width="177" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.94999999999999996"/>
                                 <color key="textColor" systemColor="systemGray4Color"/>
@@ -249,7 +249,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUo-7W-Rpg">
-                                <rect key="frame" x="156" y="684" width="103" height="40"/>
+                                <rect key="frame" x="142" y="713" width="103" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Upload Item"/>
@@ -257,17 +257,11 @@
                                     <action selector="uploadVendorItems:" destination="e3a-Bs-pzE" eventType="touchUpInside" id="bUo-8h-Hie"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Enter Description Here" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VOF-gr-QRy">
-                                <rect key="frame" x="87" y="520" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ebD-z7-T2v">
-                                <rect key="frame" x="87" y="138" width="240" height="158"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ebD-z7-T2v">
+                                <rect key="frame" x="20" y="108" width="374" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="qSz-tR-WZ9"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2xT-gg-6YY">
                                 <rect key="frame" x="118" y="337" width="150" height="31"/>
@@ -278,9 +272,22 @@
                                     <action selector="ChooseImage" destination="e3a-Bs-pzE" eventType="touchUpInside" id="xwX-kC-8KA"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Enter Description Here" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VOF-gr-QRy">
+                                <rect key="frame" x="73" y="532" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cPc-u1-6c5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ebD-z7-T2v" firstAttribute="top" secondItem="cPc-u1-6c5" secondAttribute="top" constant="20" id="RHR-cd-Us8"/>
+                            <constraint firstItem="cPc-u1-6c5" firstAttribute="trailing" secondItem="ebD-z7-T2v" secondAttribute="trailing" constant="20" id="SWX-dr-nXg"/>
+                            <constraint firstItem="ebD-z7-T2v" firstAttribute="leading" secondItem="cPc-u1-6c5" secondAttribute="leading" constant="20" id="Z5r-jH-vk5"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xdx-N7-QFG"/>
                     <connections>

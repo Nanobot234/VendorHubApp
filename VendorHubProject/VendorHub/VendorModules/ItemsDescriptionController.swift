@@ -25,6 +25,8 @@ class ItemsDescriptionController: UIViewController {
     
     private let storage = Storage.storage().reference()
     
+    
+    var imageLocation = ""
     let ImagePickerController = UIImagePickerController()
     
     override func viewDidLoad() {
@@ -32,23 +34,37 @@ class ItemsDescriptionController: UIViewController {
 
         // Do any additional setup after loading the view.
         
+        
+       
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         ImagePickerController.delegate = self
         ImagePickerController.sourceType = .photoLibrary
         ImagePickerController.allowsEditing = true
-       
     }
+    
     
     @IBAction func uploadVendorItems(_ sender: Any) {
       
         let currentuser = (auth.currentUser?.uid)!
         
-        db.collection("Vendor").document(currentuser).setData(["ItemPrice":itemPrice.text!,"Item Description":itemDescription.text!], merge: true)
+        uploadImage()  //upload image first
+        
+        
+        db.collection("Vendor").document(currentuser).setData(["ItemPrice":itemPrice.text!,"Item Description":itemDescription.text!,"Image":imageLocation], merge: true)
         //show previous again
 //        let storyboard = UIStoryboard(name: "vendorLocations", bundle: nil)
 //               let targetVC = storyboard.instantiateViewController(identifier: "vendorItemsListTable")
 //        show(targetVC, sender: self)
-        
+        if(itemImage.image != nil){
         navigationController?.popViewController(animated: true)
+        }
+        
+        //from here update the table viw right, omg
+        
+    //https://stackoverflow.com/questions/25921623/how-to-reload-tableview-from-another-view-controller-in-swift
+        //updating ity here
     }
     
     //when you tap the upload button
@@ -58,15 +74,21 @@ class ItemsDescriptionController: UIViewController {
     }
    //now get the image
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func uploadImage() {
+        storage.child(""+auth.currentUser!.uid + "/image.png").putData((itemImage.image?.pngData())!, metadata: nil, completion: {_, error in
+            guard error == nil else {
+                print("Failed to upload")
+                return
+            }
+        })
+            storage.child(""+auth.currentUser!.uid + "/image.png").downloadURL(completion: {url, error in
+                guard let url = url, error == nil else {
+                    return
+                }
+                self.imageLocation = url.absoluteString
+                UserDefaults.standard.set(self.imageLocation, forKey: "url")
+        })
     }
-    */
 
 }
 
@@ -86,9 +108,9 @@ extension ItemsDescriptionController: UIImagePickerControllerDelegate, UINavigat
             return
         }
         
-        
+       
         //put image here
-        //storage.putData(imageData, metadata: nil, completion: <#T##((StorageMetadata?, Error?) -> Void)?##((StorageMetadata?, Error?) -> Void)?##(StorageMetadata?, Error?) -> Void#>)
+       
         itemImage.image = UIImage(data: imageData)
         picker.dismiss(animated: true,completion: nil)
         

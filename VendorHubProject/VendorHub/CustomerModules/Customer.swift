@@ -5,6 +5,12 @@
 //  Created by Nana Bonsu on 3/13/22.
 //
 
+
+//ignore this class for now, I have not used it as of now
+
+
+
+
 import Foundation
 import FirebaseAuth
 
