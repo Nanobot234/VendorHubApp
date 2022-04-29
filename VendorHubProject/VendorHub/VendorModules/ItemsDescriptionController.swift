@@ -18,13 +18,19 @@ class ItemsDescriptionController: UIViewController {
     let db = Firestore.firestore()
     let auth = Auth.auth()
     
+ 
+    
     @IBOutlet weak var itemImage: UIImageView!
+    
+    
     
     @IBOutlet weak var itemPrice: UITextField!
     @IBOutlet weak var itemDescription: UITextView!
     
     private let storage = Storage.storage().reference()
     
+    
+   
     
     var imageLocation = ""
     let ImagePickerController = UIImagePickerController()
@@ -47,16 +53,9 @@ class ItemsDescriptionController: UIViewController {
     
     @IBAction func uploadVendorItems(_ sender: Any) {
       
-        let currentuser = (auth.currentUser?.uid)!
+      
         
-        uploadImage()  //upload image first
-        
-        
-        db.collection("Vendor").document(currentuser).setData(["ItemPrice":itemPrice.text!,"Item Description":itemDescription.text!,"Image":imageLocation], merge: true)
-        //show previous again
-//        let storyboard = UIStoryboard(name: "vendorLocations", bundle: nil)
-//               let targetVC = storyboard.instantiateViewController(identifier: "vendorItemsListTable")
-//        show(targetVC, sender: self)
+        uploadImageandDetails()  //upload image first
         if(itemImage.image != nil){
         navigationController?.popViewController(animated: true)
         }
@@ -74,7 +73,11 @@ class ItemsDescriptionController: UIViewController {
     }
    //now get the image
 
-    func uploadImage() {
+    
+    func uploadImageandDetails() {
+        
+        let currentuser = (auth.currentUser?.uid)!
+        
         storage.child(""+auth.currentUser!.uid + "/image.png").putData((itemImage.image?.pngData())!, metadata: nil, completion: {_, error in
             guard error == nil else {
                 print("Failed to upload")
@@ -86,6 +89,10 @@ class ItemsDescriptionController: UIViewController {
                     return
                 }
                 self.imageLocation = url.absoluteString
+                self.db.collection("Vendor").document(currentuser).collection("Items").addDocument(data:["ItemPrice":self.itemPrice.text!,"ItemDescription":self.itemDescription.text!,"Image":self.imageLocation])
+               // print(self.imageLocation)
+                
+                
                 UserDefaults.standard.set(self.imageLocation, forKey: "url")
         })
     }

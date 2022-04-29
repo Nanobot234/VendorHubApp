@@ -16,7 +16,6 @@ class CollectionTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollec
     
     @IBOutlet weak var mycollectionView: UICollectionView!
     
-     let storyboard = UIStoryboard(name:"CustomerUserFlow", bundle: nil)
         //images will go here to load
     var vendorItems = [Model]()
     
@@ -49,6 +48,7 @@ class CollectionTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollec
         self.vendorItems = models
         mycollectionView.reloadData() //incase of problems?
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return vendorItems.count
     }

@@ -33,13 +33,17 @@ class CollectionViewCell: UICollectionViewCell{
         
     }
     
+    
     public func configure(with model:Model) {
-        self.myImage.image = UIImage(named: model.imageName)
+        //change this to to configureing 
+        self.myImage.setImage(model.imageName)
         self.myImage.contentMode =  .scaleAspectFill
         
     }
    
     
+    
+    //maybe load from firebase there
     
     
     @objc public func imageTap() {

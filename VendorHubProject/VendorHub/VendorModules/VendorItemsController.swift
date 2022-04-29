@@ -12,29 +12,43 @@ class VendorItemsController: UIViewController {
     
     let db = Firestore.firestore()
     let auth = Auth.auth()
-    
+   
+    var VendorItems: Vendor!
     
     @IBOutlet weak var table: UITableView!
     
- 
-    //JOhn tutorial saving class to firestir
-    
-    //strill watch video
-    
     override func viewDidLoad() {
        
-        
+        super.viewDidLoad()
       //  if(auth.currentUser != nil){Progress}
         // Do any additional setup after loading the view.
         //no cnnection to table view omgggg
+        VendorItems = Vendor()
         table.delegate = self
         table.dataSource = self
+        //table.rowHeight = UITableView.automaticDimension
+      
         
         
     }
     
- 
+    override func viewDidAppear(_ animated: Bool) {
+        //need to chheck if there are any documents here...
+        super.viewDidAppear(animated)
+        self.VendorItems.Items = []
+        VendorItems.loadItemsData { dataGet in
+            if dataGet {
+                
+                self.table.reloadData()
+            } else {
+                print("Something wrong")
+            }
+        }
+    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //not needed as of now since will use..
+    }
         //idea is to have   table view, with all the list of items,
     /*
     // MARK: - Navigation
@@ -64,13 +78,24 @@ class VendorItemsController: UIViewController {
 extension VendorItemsController:UITableViewDelegate,UITableViewDataSource {
    
     
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 50
+        return VendorItems.Items.count
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            return UITableViewCell()
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 420
+    }
+  
+    func tableView(_ table: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = table.dequeueReusableCell(withIdentifier:"cell",for: indexPath) as? ItemDisplayCell {
+            cell.DescriptionLabel?.text = VendorItems.Items[indexPath.row].itemDescription
+            cell.PriceLabel?.text = VendorItems.Items[indexPath.row].price
+            
+            cell.itemImage?.setImage(VendorItems.Items[indexPath.row].id)
+         //   print(cell.PriceLabel.text)
+        return cell
+        }
+        return UITableViewCell()
     }
     
     

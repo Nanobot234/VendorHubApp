@@ -18,9 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` v]instead).
         guard let _ = (scene as? UIWindowScene) else { return }
         
-        //  let storyboard = UIStoryboard(name:"CustomerUserFlow", bundle: nil)
+       //  let storyboard = UIStoryboard(name:"vendorLocations", bundle: nil)
         
-        //let initialView = storyboard.instantiateViewController(withIdentifier: "CustomerHomePage")
+        //let initialView = storyboard.instantiateViewController(withIdentifier: "vendorItemsList")
         
         //window?.rootViewController = initialView
     }

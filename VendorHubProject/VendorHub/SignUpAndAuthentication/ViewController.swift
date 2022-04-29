@@ -107,18 +107,18 @@ class ViewController: UIViewController {
     //sign out button will appear here hopefully!!
     @IBAction override func unwind(for unwindSegue: UIStoryboardSegue, towards subsequentVC: UIViewController) {
         
+        //maybe here!!
     }
-    
     
     //function that overrides segue. In this case, this segue goes to the vendor storybpard
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "VendorLocationsSegue" {
-            guard segue.destination is LocationDetailViewController else {return }
-        }
-        
-        
-    
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "VendorLocationsSegue" {
+//            guard segue.destination is LocationDetailViewController else {return }
+//        }
+//        
+//        
+//    
+//    }
     
 }
 

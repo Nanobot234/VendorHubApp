@@ -739,6 +739,7 @@ PODS:
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
+  - Nuke (10.7.1)
   - PromisesObjC (2.1.0)
   - SwiftLint (0.47.0)
 
@@ -749,6 +750,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - GoogleMaps (= 4.2.0)
   - GooglePlaces (= 4.2.0)
+  - Nuke (~> 10.7)
   - SwiftLint
 
 SPEC REPOS:
@@ -772,6 +774,7 @@ SPEC REPOS:
     - leveldb-library
     - Libuv-gRPC
     - nanopb
+    - Nuke
     - PromisesObjC
     - SwiftLint
 
@@ -795,9 +798,10 @@ SPEC CHECKSUMS:
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   Libuv-gRPC: 55e51798e14ef436ad9bc45d12d43b77b49df378
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
+  Nuke: 279f17a599fd1c83cf51de5e0e1f2db143a287b0
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
   SwiftLint: d41cc46a2ae58ac6d9f26954bc89f1d72e71fdef
 
-PODFILE CHECKSUM: af51037a534c0b4ee34978c543d51585382213e7
+PODFILE CHECKSUM: aebb3842443527fa42563ea04f06cfb7ed49ee29
 
 COCOAPODS: 1.11.2
