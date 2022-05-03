@@ -14,8 +14,10 @@ class CollectionViewCell: UICollectionViewCell{
    
     @IBOutlet var myImage:UIImageView!
    // let storyboard = UIStoryboard(name:"CustomerUserFlow", bundle: nil)
-    var isTapped = false
     
+    var itemPrice = ""
+    var itemDescription = ""
+    var tablecellindex = 0;
    //  var viewController:CustomerHomePageController = CustomerHomePageController(nibName: nil, bundle: nil)
    
     static let indentifier = "CollectionViewCell"
@@ -37,7 +39,10 @@ class CollectionViewCell: UICollectionViewCell{
     public func configure(with model:Model) {
         //change this to to configureing 
         self.myImage.setImage(model.imageName)
+        self.itemPrice = model.price
+        self.itemDescription = model.itemDescription
         self.myImage.contentMode =  .scaleAspectFill
+        
         
     }
    
@@ -45,12 +50,6 @@ class CollectionViewCell: UICollectionViewCell{
     
     //maybe load from firebase there
     
-    
-    @objc public func imageTap() {
-        print("Tapped")
-        
-        isTapped = true
-    }
     
     
     //create  table vieww cell

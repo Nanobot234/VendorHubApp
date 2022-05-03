@@ -7,12 +7,15 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestore
+
 
 class CustomerSignUpLoginController: UIViewController {
 
     
     var myref = Database.database().reference()
     let auth = Auth.auth()
+    
     
     
     let currStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -112,7 +115,12 @@ class CustomerSignUpLoginController: UIViewController {
                     self.CreateUserError.text = "User Already Exists With Those Credentials"
                     print("Wrong")
                 } else {
+                    
+                    
+                    
                     self.performSegue(withIdentifier: "accountCreatedSegue", sender: self)
+                    
+                    
                 }
                 
             }

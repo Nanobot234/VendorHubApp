@@ -68,8 +68,8 @@ class ViewController: UIViewController {
         
     //firestore data
         let vendorid = (auth.currentUser?.uid)!
+
         
-     
         auth.createUser(withEmail: vendorEmail.text!, password: vendorPassword.text!) {
             (result,error) in
             if error != nil {
@@ -78,8 +78,8 @@ class ViewController: UIViewController {
                 self.db.collection((result?.user.uid)!).document("Info").setData(["name":self.vendorName.text!,"email":self.vendorEmail.text!])
                 self.performSegue(withIdentifier: "signUp", sender: self)
             }
-            
         }
+        
         
     }
     
@@ -92,7 +92,7 @@ class ViewController: UIViewController {
                 self.LoginerrorLabel.alpha = 1
             } else{
                 
-                //segue to go Dimitar's storyboard
+            
                self.performSegue(withIdentifier: "VendorLocationsSegue", sender: self)
                
               

@@ -33,6 +33,7 @@ class Vendor {
     var longitude: Double = 0.0
     var latitude: Double = 0.0
     var Items: [Item] = []
+    
     var db: Firestore!
     var currentUser: Auth
     
@@ -44,6 +45,9 @@ class Vendor {
     //dso idea is that when I get the data, I will make a new Item class, for
 
     //then store it in a class, that hold it, the vendor
+   
+    
+    //function to load Itme 
     
     func loadItemsData(completed: @escaping (_ dataGet: Bool) -> Void) {
         db.collection("Vendor").document(currentUser.currentUser!.uid).collection("Items").addSnapshotListener {(QuerySnapshot, Error) in

@@ -36,13 +36,14 @@ class VendorItemsController: UIViewController {
         //need to chheck if there are any documents here...
         super.viewDidAppear(animated)
         self.VendorItems.Items = []
+        
+        //snapshot listener that listens for changesx
         VendorItems.loadItemsData { dataGet in
-            if dataGet {
-                
+            
                 self.table.reloadData()
-            } else {
-                print("Something wrong")
-            }
+            
+                
+            
         }
     }
     
@@ -64,11 +65,7 @@ class VendorItemsController: UIViewController {
      }
      
      funv
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
+   
     */
     
     //trying to have it then when the ui loads, if have current user then just swiutch to this
@@ -85,10 +82,11 @@ extension VendorItemsController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 420
     }
-  
+  //sets ev
     func tableView(_ table: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = table.dequeueReusableCell(withIdentifier:"cell",for: indexPath) as? ItemDisplayCell {
             cell.DescriptionLabel?.text = VendorItems.Items[indexPath.row].itemDescription
+            print(cell.DescriptionLabel.text!)
             cell.PriceLabel?.text = VendorItems.Items[indexPath.row].price
             
             cell.itemImage?.setImage(VendorItems.Items[indexPath.row].id)

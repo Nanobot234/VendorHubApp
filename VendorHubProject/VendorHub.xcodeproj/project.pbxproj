@@ -35,6 +35,7 @@
 		F2E2F3AF27F42DEF00B6BDA0 /* vendorLocations.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E2F3AE27F42DEF00B6BDA0 /* vendorLocations.storyboard */; };
 		F2E9EDBD27FC57AC00E1A351 /* VendorItemsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E9EDBC27FC57AC00E1A351 /* VendorItemsController.swift */; };
 		F2ED1E4E281796FD00DB7DDA /* ItemDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2ED1E4D281796FD00DB7DDA /* ItemDisplayCell.swift */; };
+		F2ED1E5028203F5500DB7DDA /* CustomerTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2ED1E4F28203F5100DB7DDA /* CustomerTabBarController.swift */; };
 		F2F5D3BA27EC0EAA00586DC0 /* CustomerUserFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2F5D3B927EC0EAA00586DC0 /* CustomerUserFlow.storyboard */; };
 		FAEAC75DF21148AE7C321D56 /* Pods_VendorHubTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73F16EAD02F858A7449B3FE6 /* Pods_VendorHubTests.framework */; };
 /* End PBXBuildFile section */
@@ -96,6 +97,7 @@
 		F2E2F3AE27F42DEF00B6BDA0 /* vendorLocations.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = vendorLocations.storyboard; sourceTree = "<group>"; };
 		F2E9EDBC27FC57AC00E1A351 /* VendorItemsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorItemsController.swift; sourceTree = "<group>"; };
 		F2ED1E4D281796FD00DB7DDA /* ItemDisplayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDisplayCell.swift; sourceTree = "<group>"; };
+		F2ED1E4F28203F5100DB7DDA /* CustomerTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerTabBarController.swift; sourceTree = "<group>"; };
 		F2F5D3B927EC0EAA00586DC0 /* CustomerUserFlow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CustomerUserFlow.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -238,14 +240,15 @@
 			isa = PBXGroup;
 			children = (
 				F206084027E8BC890028123C /* CustomerHomePageController.swift */,
-				F2F5D3B927EC0EAA00586DC0 /* CustomerUserFlow.storyboard */,
 				F2C124EF281B294E00E9AD99 /* ProfileSettingsController.swift */,
 				F2AE7A96281A05A3000767E7 /* NukeImage.swift */,
 				F2CDDFB227F93856000434BB /* ItemPriceDescriptionController.swift */,
+				F2F5D3B927EC0EAA00586DC0 /* CustomerUserFlow.storyboard */,
 				F2B493F627F358EE00F6B108 /* CustomerSignUpLoginController.swift */,
 				F24B03C727DEE518006ECF31 /* Customer.swift */,
 				F2E2F39F27F1160600B6BDA0 /* Collection Cells */,
 				F2E2F3A027F11F9500B6BDA0 /* TableViewCells */,
+				F2ED1E4F28203F5100DB7DDA /* CustomerTabBarController.swift */,
 			);
 			path = CustomerModules;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				F2A00C0027D42C270068024F /* SceneDelegate.swift in Sources */,
 				F2143ED128071106005BFA36 /* ItemsDescriptionController.swift in Sources */,
 				F2CDDFB327F93856000434BB /* ItemPriceDescriptionController.swift in Sources */,
+				F2ED1E5028203F5500DB7DDA /* CustomerTabBarController.swift in Sources */,
 				F206084127E8BC890028123C /* CustomerHomePageController.swift in Sources */,
 				F2AE7A97281A05A3000767E7 /* NukeImage.swift in Sources */,
 				F2E9EDBD27FC57AC00E1A351 /* VendorItemsController.swift in Sources */,

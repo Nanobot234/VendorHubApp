@@ -55,10 +55,14 @@ class ItemsDescriptionController: UIViewController {
       
       
         
-        uploadImageandDetails()  //upload image first
-        if(itemImage.image != nil){
-        navigationController?.popViewController(animated: true)
+          //upload image first
+        //if successful upload and have image then will go to the next view
+        self.uploadImageandDetails { result in
+            if result && (self.itemImage.image != nil) {
+                self.navigationController?.popViewController(animated: true)
+            }
         }
+      
         
         //from here update the table viw right, omg
         
@@ -74,30 +78,52 @@ class ItemsDescriptionController: UIViewController {
    //now get the image
 
     
-    func uploadImageandDetails() {
+    func uploadImageandDetails(completed:@escaping (Bool) -> Void) {
         
         let currentuser = (auth.currentUser?.uid)!
+        let imageId = UUID()
         
-        storage.child(""+auth.currentUser!.uid + "/image.png").putData((itemImage.image?.pngData())!, metadata: nil, completion: {_, error in
+        storage.child(""+auth.currentUser!.uid + "/" + imageId.uuidString +  ".png").putData((itemImage.image?.pngData())!, metadata: nil, completion: {_, error in
             guard error == nil else {
                 print("Failed to upload")
                 return
             }
+            
+            self.sendtoFirestore(imageId) { val in
+                if val {
+                    completed(true)
+                }
+                else {
+                    completed(false)
+                }
+            }
         })
-            storage.child(""+auth.currentUser!.uid + "/image.png").downloadURL(completion: {url, error in
+          
+        
+      
+    }
+
+    
+    func sendtoFirestore(_ imageId: UUID, completed:@escaping (Bool) -> Void) {
+        
+        let currentuser = (auth.currentUser?.uid)!
+        storage.child(""+auth.currentUser!.uid + "/" +  imageId.uuidString + ".png").downloadURL(completion: {url, error in
                 guard let url = url, error == nil else {
+                   
                     return
                 }
                 self.imageLocation = url.absoluteString
                 self.db.collection("Vendor").document(currentuser).collection("Items").addDocument(data:["ItemPrice":self.itemPrice.text!,"ItemDescription":self.itemDescription.text!,"Image":self.imageLocation])
                // print(self.imageLocation)
                 
-                
-                UserDefaults.standard.set(self.imageLocation, forKey: "url")
+                completed(true)
+               
         })
+        
     }
-
 }
+
+
 
 extension ItemsDescriptionController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     

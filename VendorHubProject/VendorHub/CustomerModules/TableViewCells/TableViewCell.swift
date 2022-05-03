@@ -55,6 +55,7 @@ class CollectionTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.indentifier, for: indexPath) as! CollectionViewCell
+        cell.tablecellindex = indexPath.row
         cell.configure(with: vendorItems[indexPath.row])
         return cell
     }
