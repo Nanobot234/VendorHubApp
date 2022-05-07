@@ -14,31 +14,17 @@
 import Foundation
 import FirebaseAuth
 
-class Customer {
+struct cartItem: Codable {
 
-    var name:String
-    var email:String
-    var Location:String
-    var ErrorWithLogin:Bool
-    let auth = Auth.auth()
+    var vendorID:String
+    var itemImage:Data
+    var itemDescription:String
+    var itemPrice:String
+    var itemID:String?//this will the itemID in the vendor storage
     
-    init(newName:String,email:String){
-        self.name = newName
-        self.email = email
-        self.Location = ""
-        self.ErrorWithLogin = false
-    }
+}
+
+struct cartArray: Codable {
+    var cartItems: [cartItem] = Array()
     
-    func setCusotomerName(newName:String){
-        self.name = newName
-    }
-    
-    func setCustomerEmail(newCustomerEmail:String){
-        self.email = newCustomerEmail
-    }
-
-
-
-
-
 }

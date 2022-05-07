@@ -27,6 +27,9 @@
 		F2AE7A97281A05A3000767E7 /* NukeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AE7A96281A05A3000767E7 /* NukeImage.swift */; };
 		F2B493F727F358EE00F6B108 /* CustomerSignUpLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B493F627F358EE00F6B108 /* CustomerSignUpLoginController.swift */; };
 		F2C124F0281B294E00E9AD99 /* ProfileSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C124EF281B294E00E9AD99 /* ProfileSettingsController.swift */; };
+		F2C9D89628243EC60020F111 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C9D89528243EC60020F111 /* UserDefaultsExtension.swift */; };
+		F2C9D8982825C7F00020F111 /* CartItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C9D8972825C7F00020F111 /* CartItemCell.swift */; };
+		F2C9D89A2825CA660020F111 /* FirestoreOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C9D8992825CA660020F111 /* FirestoreOps.swift */; };
 		F2CDDFB327F93856000434BB /* ItemPriceDescriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CDDFB227F93856000434BB /* ItemPriceDescriptionController.swift */; };
 		F2E2F39C27EEBFED00B6BDA0 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E2F39B27EEBFED00B6BDA0 /* CollectionViewCell.swift */; };
 		F2E2F39E27F1111000B6BDA0 /* CollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E2F39D27F1111000B6BDA0 /* CollectionView.xib */; };
@@ -37,6 +40,7 @@
 		F2ED1E4E281796FD00DB7DDA /* ItemDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2ED1E4D281796FD00DB7DDA /* ItemDisplayCell.swift */; };
 		F2ED1E5028203F5500DB7DDA /* CustomerTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2ED1E4F28203F5100DB7DDA /* CustomerTabBarController.swift */; };
 		F2F5D3BA27EC0EAA00586DC0 /* CustomerUserFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2F5D3B927EC0EAA00586DC0 /* CustomerUserFlow.storyboard */; };
+		F2FA220C2822BFF6008413C3 /* CustomerCartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FA220B2822BFF6008413C3 /* CustomerCartController.swift */; };
 		FAEAC75DF21148AE7C321D56 /* Pods_VendorHubTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73F16EAD02F858A7449B3FE6 /* Pods_VendorHubTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +93,9 @@
 		F2AE7A96281A05A3000767E7 /* NukeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NukeImage.swift; sourceTree = "<group>"; };
 		F2B493F627F358EE00F6B108 /* CustomerSignUpLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerSignUpLoginController.swift; sourceTree = "<group>"; };
 		F2C124EF281B294E00E9AD99 /* ProfileSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsController.swift; sourceTree = "<group>"; };
+		F2C9D89528243EC60020F111 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
+		F2C9D8972825C7F00020F111 /* CartItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemCell.swift; sourceTree = "<group>"; };
+		F2C9D8992825CA660020F111 /* FirestoreOps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreOps.swift; sourceTree = "<group>"; };
 		F2CDDFB227F93856000434BB /* ItemPriceDescriptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPriceDescriptionController.swift; sourceTree = "<group>"; };
 		F2E2F39B27EEBFED00B6BDA0 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		F2E2F39D27F1111000B6BDA0 /* CollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionView.xib; sourceTree = "<group>"; };
@@ -99,6 +106,7 @@
 		F2ED1E4D281796FD00DB7DDA /* ItemDisplayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDisplayCell.swift; sourceTree = "<group>"; };
 		F2ED1E4F28203F5100DB7DDA /* CustomerTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerTabBarController.swift; sourceTree = "<group>"; };
 		F2F5D3B927EC0EAA00586DC0 /* CustomerUserFlow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CustomerUserFlow.storyboard; sourceTree = "<group>"; };
+		F2FA220B2822BFF6008413C3 /* CustomerCartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerCartController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,7 +197,9 @@
 				F2A00BFD27D42C270068024F /* AppDelegate.swift */,
 				F2A00BFF27D42C270068024F /* SceneDelegate.swift */,
 				F25D693C27E2EB0900631EF8 /* ApiKeys.swift */,
+				F2C9D8992825CA660020F111 /* FirestoreOps.swift */,
 				F2E2F3A927F42A6800B6BDA0 /* VendorModules */,
+				F2C9D89428243E770020F111 /* UtilityClasses */,
 				F2E2F3A527F15E2000B6BDA0 /* CustomerModules */,
 				F22B2FEC28131D68008AAEEF /* SignUpAndAuthentication */,
 				F2E2F3A627F1CDC400B6BDA0 /* AssetImeages */,
@@ -217,6 +227,15 @@
 			path = VendorHubUITests;
 			sourceTree = "<group>";
 		};
+		F2C9D89428243E770020F111 /* UtilityClasses */ = {
+			isa = PBXGroup;
+			children = (
+				F2AE7A96281A05A3000767E7 /* NukeImage.swift */,
+				F2C9D89528243EC60020F111 /* UserDefaultsExtension.swift */,
+			);
+			path = UtilityClasses;
+			sourceTree = "<group>";
+		};
 		F2E2F39F27F1160600B6BDA0 /* Collection Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,9 +260,10 @@
 			children = (
 				F206084027E8BC890028123C /* CustomerHomePageController.swift */,
 				F2C124EF281B294E00E9AD99 /* ProfileSettingsController.swift */,
-				F2AE7A96281A05A3000767E7 /* NukeImage.swift */,
 				F2CDDFB227F93856000434BB /* ItemPriceDescriptionController.swift */,
 				F2F5D3B927EC0EAA00586DC0 /* CustomerUserFlow.storyboard */,
+				F2FA220B2822BFF6008413C3 /* CustomerCartController.swift */,
+				F2C9D8972825C7F00020F111 /* CartItemCell.swift */,
 				F2B493F627F358EE00F6B108 /* CustomerSignUpLoginController.swift */,
 				F24B03C727DEE518006ECF31 /* Customer.swift */,
 				F2E2F39F27F1160600B6BDA0 /* Collection Cells */,
@@ -519,7 +539,10 @@
 			files = (
 				F2C124F0281B294E00E9AD99 /* ProfileSettingsController.swift in Sources */,
 				F2A00C0227D42C270068024F /* ViewController.swift in Sources */,
+				F2C9D89A2825CA660020F111 /* FirestoreOps.swift in Sources */,
+				F2C9D8982825C7F00020F111 /* CartItemCell.swift in Sources */,
 				F25D693D27E2EB0900631EF8 /* ApiKeys.swift in Sources */,
+				F2C9D89628243EC60020F111 /* UserDefaultsExtension.swift in Sources */,
 				F2A701A72815996B00CA0DC9 /* Vendor&Item.swift in Sources */,
 				F2E2F3A227F1528900B6BDA0 /* TableViewCell.swift in Sources */,
 				F2A00BFE27D42C270068024F /* AppDelegate.swift in Sources */,
@@ -532,6 +555,7 @@
 				F2AE7A97281A05A3000767E7 /* NukeImage.swift in Sources */,
 				F2E9EDBD27FC57AC00E1A351 /* VendorItemsController.swift in Sources */,
 				F24B03C827DEE518006ECF31 /* Customer.swift in Sources */,
+				F2FA220C2822BFF6008413C3 /* CustomerCartController.swift in Sources */,
 				F2ED1E4E281796FD00DB7DDA /* ItemDisplayCell.swift in Sources */,
 				F2E2F39C27EEBFED00B6BDA0 /* CollectionViewCell.swift in Sources */,
 			);

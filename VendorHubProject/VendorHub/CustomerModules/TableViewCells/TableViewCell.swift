@@ -13,7 +13,7 @@ import UIKit
 class CollectionTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     static let identifier = "CollectionTableViewCell"
-    
+    var tableCellIndexPath = 0
     @IBOutlet weak var mycollectionView: UICollectionView!
     
         //images will go here to load
@@ -55,7 +55,7 @@ class CollectionTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.indentifier, for: indexPath) as! CollectionViewCell
-        cell.tablecellindex = indexPath.row
+      //  cell.tablecellindex = indexPath.row
         cell.configure(with: vendorItems[indexPath.row])
         return cell
     }

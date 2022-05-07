@@ -112,6 +112,7 @@ class ItemsDescriptionController: UIViewController {
                    
                     return
                 }
+            
                 self.imageLocation = url.absoluteString
                 self.db.collection("Vendor").document(currentuser).collection("Items").addDocument(data:["ItemPrice":self.itemPrice.text!,"ItemDescription":self.itemDescription.text!,"Image":self.imageLocation])
                // print(self.imageLocation)

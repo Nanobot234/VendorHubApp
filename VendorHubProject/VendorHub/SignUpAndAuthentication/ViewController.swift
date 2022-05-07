@@ -67,15 +67,15 @@ class ViewController: UIViewController {
     
         
     //firestore data
-        let vendorid = (auth.currentUser?.uid)!
-
         
+
+
         auth.createUser(withEmail: vendorEmail.text!, password: vendorPassword.text!) {
             (result,error) in
             if error != nil {
                 self.VendorSignUpError.text = "User Already Exists With Those Credentials"
             } else {
-                self.db.collection((result?.user.uid)!).document("Info").setData(["name":self.vendorName.text!,"email":self.vendorEmail.text!])
+                self.db.collection("Vendor").document((result?.user.uid)!).setData(["name":self.vendorName.text!,"email":self.vendorEmail.text!,"accountType":"Vendor"])
                 self.performSegue(withIdentifier: "signUp", sender: self)
             }
         }

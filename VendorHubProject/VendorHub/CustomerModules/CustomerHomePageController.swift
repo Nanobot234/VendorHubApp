@@ -34,7 +34,9 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.self.vendorNames = []
+        // self.vendorNames = []
+        self.testItems = []
+        self.vendorNames = []
         self.getVendorData {data in
             print(data)
             self.testItems = data
@@ -43,6 +45,8 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
             }
            
         }
+        
+       
     }
     
     override func viewDidLoad() {
@@ -58,7 +62,6 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
     func getVendorData(completed: @escaping (_ data:[Model]) -> Void) {
         //grap the dataa, first grab all documents, then look in the documents for the items collection
         //then grab all the documents under items
-        
         var itemsArray = [Model]()
         db.collection("Vendor").getDocuments() { (QuerySnapshot,Error) in
             guard Error == nil else {
@@ -138,6 +141,7 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
         
         let cell = table.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
             
+        cell.tableCellIndexPath = indexPath.row
         cell.configure(with: testItems) //puts the items in the collectionView?
             //here is where it puhts items in collection viee
             
@@ -150,7 +154,11 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
     
     //to set the title of each row of tableView
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        //if statement maybe if its at the end 
+        //if statement maybe if its at the end
+        
+        if(vendorNames.isEmpty == true) {
+            return nil
+        }
         return vendorNames[section]
     }
     
@@ -208,11 +216,10 @@ extension CustomerHomePageController:CollectionViewCellDelegate  {
         itemVC.itemPriceText = "$" + collectionviewcell!.itemPrice
         
         //here the row your on, pass the id. from the row that
-        //let selectedIndex = table.indexPathForSelectedRow
+        let selectedIndex =  didTappedInTableViewCell.tableCellIndexPath
         
-        print(index)
         
-      //  itemVC.vendorID = vendorIDS[selectedIndex.row]
+        itemVC.vendorID = vendorIDS[selectedIndex]
         
         //then get the current price 
         navigationController?.pushViewController(itemVC, animated: true)

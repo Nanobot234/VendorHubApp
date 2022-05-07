@@ -15,7 +15,7 @@ class CustomerSignUpLoginController: UIViewController {
     
     var myref = Database.database().reference()
     let auth = Auth.auth()
-    
+    let db = Firestore.firestore()
     
     
     let currStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -109,14 +109,13 @@ class CustomerSignUpLoginController: UIViewController {
     @IBAction func createCustomerAccount(_ sender: Any) {
         
         if(createCustomerAccountButton.isEnabled == true) {
-            auth.createUser(withEmail: customerEmail.text!, password: customerPassword.text!) {
+            auth.createUser(withEmail: customerEmail.text!, password: customerPassword.text!) { [self]
                 (result,error) in
                 if error != nil {
                     self.CreateUserError.text = "User Already Exists With Those Credentials"
                     print("Wrong")
                 } else {
-                    
-                    
+                    self.db.collection("Customers").document((result?.user.uid)!).setData(["Name":self.customerName.text!,"Longitude":0.0, "Latitude":0.0,"accountType":"customer"], merge: true)
                     
                     self.performSegue(withIdentifier: "accountCreatedSegue", sender: self)
                     
@@ -128,8 +127,10 @@ class CustomerSignUpLoginController: UIViewController {
     }
     
     
+    //should check the account type to see if its correct
     @IBAction func LogInCustomer(_ sender: Any) {
         
+        //get the customer account type here!!
         auth.signIn(withEmail: customerLogInEmail.text!, password: customerLoginPassword.text!) { (result,error) in
             if error != nil {
                 self.LogInUserError.text = "Incoreect Login Credentials"
