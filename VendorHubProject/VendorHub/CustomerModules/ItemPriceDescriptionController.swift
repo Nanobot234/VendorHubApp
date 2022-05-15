@@ -7,7 +7,8 @@
 
 import UIKit
 
-//cklass to show to show the item selected by Customer
+import Firebase
+//cklass to show to show the item selected by Customer, when the user taps on a collectioNVie
 class ItemPriceDescriptionController: UIViewController {
 
     @IBOutlet weak var selectedImage:UIImageView!
@@ -16,9 +17,11 @@ class ItemPriceDescriptionController: UIViewController {
     @IBOutlet weak var itemPriceLabel: UILabel!
     var itemDescriptionText = ""
     var itemPriceText = ""
+    var auth = Auth.auth()
     
     @IBOutlet weak var AddtoCartButton: UIButton!
     var vendorID = ""
+    var imageURL = ""
     var image = UIImage()
     
     //in here, will hold the item price, description, and the vendorID as well
@@ -38,6 +41,8 @@ class ItemPriceDescriptionController: UIViewController {
         selectedImage.image = image
         
         print(vendorID)
+        //shouldnt be eimp
+        print(imageURL)
         // Do any additional setup after loading the view.
         
     }
@@ -50,18 +55,24 @@ class ItemPriceDescriptionController: UIViewController {
         
         //then if it does , you want to add the cart item to the array of cart items
         
+        var userID = (auth.currentUser?.uid)!
+        
         let userDefaults = UserDefaults.standard
        
-        var currentItem = cartItem(vendorID: self.vendorID, itemImage: self.selectedImage.image!.pngData()!, itemDescription: self.itemDescriptionLabel.text!, itemPrice: self.itemPriceLabel.text!)
+        //now s
+        let imageString = selectedImage.image?.pngData()
+        //this is item that your choosinf
+        let currentItem = cartItem(vendorID: self.vendorID,
+                                   itemImage: imageString, imageURL: imageURL, itemDescription: self.itemDescriptionLabel.text!, itemPrice: self.itemPriceLabel.text!)
         var cartArray:cartArray = cartArray()
-        if(userDefaults.valueExists(forKey: "cartArray") == false) {
+        if(userDefaults.valueExists(forKey: userID) == false) {
             //create an new array of type cart item, then add it
             cartArray.cartItems.append(currentItem)
-            userDefaults.encodeCartData(data: cartArray.cartItems)
+            userDefaults.encodeCartData(data: cartArray.cartItems, key: userID)
         }  else {
-            cartArray.cartItems = userDefaults.decodeCartData()!
+            cartArray.cartItems = userDefaults.decodeCartData(key: userID)!
             cartArray.cartItems.append(currentItem)
-            userDefaults.encodeCartData(data: cartArray.cartItems)
+            userDefaults.encodeCartData(data: cartArray.cartItems, key: userID)
         }
         
         print(cartArray)

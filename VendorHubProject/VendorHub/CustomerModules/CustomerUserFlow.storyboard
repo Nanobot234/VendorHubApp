@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nQL-QT-ViZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nQL-QT-ViZ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="zvS-lw-j8P">
             <objects>
                 <navigationController storyboardIdentifier="CustomerHomePage" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Qvr-0e-EGE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="7vd-NE-Y11"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="7vd-NE-Y11"/>
                     <navigationItem key="navigationItem" id="4JY-FM-znT"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="QeA-Ml-Lw7">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -94,7 +94,13 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="pa5-6j-r4G"/>
-                    <navigationItem key="navigationItem" title="Cart" id="b7l-Q2-W6m"/>
+                    <navigationItem key="navigationItem" title="Cart" id="b7l-Q2-W6m">
+                        <barButtonItem key="rightBarButtonItem" title="Place order" id="U87-yW-udq">
+                            <connections>
+                                <action selector="placeOrder:" destination="ZcA-IK-6WH" id="hGx-YY-Kjb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="cartTable" destination="vRa-Qf-V9j" id="ZGZ-Xs-wUe"/>
                     </connections>
@@ -118,11 +124,11 @@
             </objects>
             <point key="canvasLocation" x="1778" y="1107"/>
         </scene>
-        <!--Item-->
+        <!--Cart-->
         <scene sceneID="iM7-R5-2g2">
             <objects>
                 <navigationController id="oRz-TX-1HB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="raW-AM-0x1"/>
+                    <tabBarItem key="tabBarItem" title="Cart" image="cart" catalog="system" id="raW-AM-0x1"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="GF7-hx-wuI">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -211,7 +217,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Nearby Vendors" id="vOB-Cy-yMS">
-                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="i9o-BI-cdr"/>
+                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="i9o-BI-cdr">
+                            <connections>
+                                <action selector="gotoHome:" destination="mD5-gj-Mt6" id="igx-o4-7Sd"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="table" destination="ePK-fB-f7y" id="oyC-nQ-Vuq"/>
@@ -277,6 +287,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cart" catalog="system" width="128" height="102"/>
+        <image name="house" catalog="system" width="128" height="106"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

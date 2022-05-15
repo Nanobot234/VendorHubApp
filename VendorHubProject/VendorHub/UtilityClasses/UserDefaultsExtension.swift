@@ -17,22 +17,22 @@ extension UserDefaults {
         }
     
 
-    func encodeCartData(data:[cartItem]) {
+    func encodeCartData(data:[cartItem],key:String) {
         
         do {
             let encoder = JSONEncoder()
             
             let newdata = try encoder.encode(data)
          
-            UserDefaults.standard.set(newdata, forKey: "cartArray")
+            UserDefaults.standard.set(newdata, forKey: key)
         } catch {
             print("Unable to Encode cart array (\(error))")
         }
     }
     
     //get the cart item stored in local storage
-    func decodeCartData() -> [cartItem]? {
-        if let data = UserDefaults.standard.data(forKey: "cartArray"){
+    func decodeCartData(key:String) -> [cartItem]? {
+        if let data = UserDefaults.standard.data(forKey: key){
         
         do {
                // Create JSON Decoder

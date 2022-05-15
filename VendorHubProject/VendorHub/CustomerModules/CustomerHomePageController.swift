@@ -24,12 +24,14 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
     let db = Firestore.firestore()
     var imageData:Data!
     let mystoryboard = UIStoryboard(name:"CustomerUserFlow" , bundle: nil)
+    let homeStoryboard = UIStoryboard(name:"Main" , bundle: nil)
     
     var imagetoSend:UIImage!
    
     
     @IBOutlet var table: UITableView!
     // var itemController:CustomerHomePageController
+    @IBOutlet weak var SignOutButton: UIBarButtonItem!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -37,6 +39,8 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
         // self.vendorNames = []
         self.testItems = []
         self.vendorNames = []
+        
+        //gets the vendor Items
         self.getVendorData {data in
             print(data)
             self.testItems = data
@@ -49,6 +53,7 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
        
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         table.register(CollectionTableViewCell.nib(), forCellReuseIdentifier: CollectionTableViewCell.identifier)
@@ -57,6 +62,19 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
       
     }
     
+    @IBAction func gotoHome(_ sender: Any) {
+        do {
+            try auth.signOut()
+            
+            let customerChoiceVC = homeStoryboard.instantiateViewController(withIdentifier: "customerOption")
+            
+            navigationController?.pushViewController(customerChoiceVC, animated: true)
+           
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+    }
     
     //gets all the vendor data fornow, should marcha certain description
     func getVendorData(completed: @escaping (_ data:[Model]) -> Void) {
@@ -97,6 +115,8 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
         }
         
         //
+        
+        
         
     }
     
@@ -142,6 +162,7 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
         let cell = table.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
             
         cell.tableCellIndexPath = indexPath.row
+        //puts the test items in the
         cell.configure(with: testItems) //puts the items in the collectionView?
             //here is where it puhts items in collection viee
             
@@ -205,20 +226,26 @@ extension CustomerHomePageController:CollectionViewCellDelegate  {
     
     func collectionView(collectionviewcell: CollectionViewCell?, index: Int, didTappedInTableViewCell: CollectionTableViewCell) {
         
-        
-        
    
         let itemVC = storyboard?.instantiateViewController(withIdentifier: "imageDetailsView") as! ItemPriceDescriptionController
         
         itemVC.image = (collectionviewcell?.myImage.image)!
+        //also set the image url, that will be saved..
+        
+    
         itemVC.itemDescriptionText = collectionviewcell!.itemDescription
         
         itemVC.itemPriceText = "$" + collectionviewcell!.itemPrice
         
+        //here is the image URL,
+        itemVC.imageURL = collectionviewcell!.setImageURL
+        //pass the image URL
+        
+        
         //here the row your on, pass the id. from the row that
         let selectedIndex =  didTappedInTableViewCell.tableCellIndexPath
         
-        
+        //sets the vendor id here
         itemVC.vendorID = vendorIDS[selectedIndex]
         
         //then get the current price 

@@ -58,6 +58,7 @@ class Vendor {
            
             for document in QuerySnapshot!.documents {
                 print(document.data())
+                //put the item id for every item as well, then can check if its!!
                 let item = Item.init(document.data())
                 self.Items.append(item)
             }

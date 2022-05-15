@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Firebase
 
 class CustomerCartController: UIViewController {
 
     
     var CustomerCart:cartArray = cartArray() //the cart using for tableView
+    let auth = Auth.auth()
     //in this classwill
     @IBOutlet weak var cartTable: UITableView!
     
@@ -18,8 +20,11 @@ class CustomerCartController: UIViewController {
         let userDefaults = UserDefaults.standard
         //show something if you have cart data only
         
-        if(userDefaults.valueExists(forKey: "cartArray") == true) {
-        CustomerCart.cartItems = userDefaults.decodeCartData()!
+        let userID = (auth.currentUser?.uid)!
+        
+        
+        if(userDefaults.valueExists(forKey: userID) == true) {
+            CustomerCart.cartItems = userDefaults.decodeCartData(key: userID)!
             self.cartTable.reloadData()
         }
     }
@@ -32,6 +37,20 @@ class CustomerCartController: UIViewController {
         
     }
     
+    @IBAction func placeOrder(_ sender: Any) {
+        
+        //loop through cart , then make an order depending on the vendor,
+        //order will have order number, then items as well, as an arrsy of dic
+       // var orderarr = [cartItem]()
+        
+        FirestoreOps.setOrderItem(customerID: auth.currentUser!.uid,iteminfo: CustomerCart.cartItems) { finished in
+            if finished {
+                print("Sent Items to Vendor")
+            }
+        }
+               
+                
+    }
     
     
     
@@ -46,7 +65,6 @@ class CustomerCartController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
 
 extension CustomerCartController: UITableViewDelegate, UITableViewDataSource {
@@ -59,16 +77,18 @@ extension CustomerCartController: UITableViewDelegate, UITableViewDataSource {
         
         cell.itemPrice?.text = CustomerCart.cartItems[indexPath.row].itemPrice
         
+        
         let vendorID = CustomerCart.cartItems[indexPath.row].vendorID
-        let vendorName = FirestoreOps.getVendorName(vendorID: vendorID)
-        print(vendorName)
-        cell.StoreName?.text = vendorName
+      //  let vendorName = FirestoreOps.getVendorName(vendorID: vendorID)
+       // print(vendorName)
+       // cell.StoreName?.text = vendorName
         
         
-        //image
         let imageData = CustomerCart.cartItems[indexPath.row].itemImage
         
-        cell.itemImage.image = UIImage(data: imageData)
+        //this image is created from the image that you set the collectionView to
+        cell.itemImage.image = UIImage(data: imageData!)
+        
         return cell
     }
     

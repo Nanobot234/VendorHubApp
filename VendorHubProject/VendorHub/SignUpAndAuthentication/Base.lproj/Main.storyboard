@@ -144,17 +144,17 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="hM1-Re-PkG" kind="relationship" relationship="rootViewController" id="xfX-9M-ViC"/>
+                        <segue destination="hM1-Re-PkG" kind="relationship" relationship="rootViewController" id="nFd-SB-JHf"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ztb-u9-Fcg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2543" y="319"/>
         </scene>
-        <!--View Controller-->
+        <!--User Choice View Controller-->
         <scene sceneID="l8q-CH-V7q">
             <objects>
-                <viewController id="hM1-Re-PkG" customClass="ViewController" customModule="VendorHub" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="customerOption" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hM1-Re-PkG" customClass="UserChoiceViewController" customModule="VendorHub" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V0b-eb-nGa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -205,7 +205,7 @@
         <!--View Controller-->
         <scene sceneID="NoU-F9-eBp">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="c8E-YQ-1aM" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="c8E-YQ-1aM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="n0e-PH-nKC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -228,7 +228,7 @@
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="24"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="KJV-JY-q9A" kind="show" id="lBO-t3-ged"/>
+                                    <segue destination="KJV-JY-q9A" kind="show" id="SUR-nt-jnI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WFq-2n-yvQ">
@@ -331,9 +331,7 @@
                         <viewLayoutGuide key="safeArea" id="dLE-mQ-coF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Sign Up" id="wC3-X3-vbp">
-                        <barButtonItem key="backBarButtonItem" title="&quot;&quot;" id="XkW-u6-DYR"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Sign Up" id="wC3-X3-vbp"/>
                     <connections>
                         <outlet property="ConfirmPasswordError" destination="aYs-Rr-6mL" id="Kgf-TK-eAS"/>
                         <outlet property="CreateUserError" destination="sFR-Ee-vMX" id="FAI-h5-hG8"/>
@@ -343,28 +341,21 @@
                         <outlet property="customerEmail" destination="sCg-E0-zsa" id="kF3-uM-7rO"/>
                         <outlet property="customerName" destination="pdm-cx-L37" id="Aj0-2c-HzM"/>
                         <outlet property="customerPassword" destination="qLc-3w-0VX" id="Bs3-NK-UxB"/>
-                        <segue destination="DRl-pB-zCc" kind="show" identifier="accountCreatedSegue" id="rEF-x8-ewG"/>
+                        <segue destination="DRl-pB-zCc" kind="presentation" identifier="accountCreatedSegue" id="rEF-x8-ewG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kEn-KH-8wf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="663.768115942029" y="0.6696428571428571"/>
+            <point key="canvasLocation" x="751" y="-485"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="JZm-yw-sxo">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="DRl-pB-zCc" sceneMemberID="viewController">
+                <viewController id="DRl-pB-zCc" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LAh-of-xS7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Account Has Been Created!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSe-O4-eKU">
-                                <rect key="frame" x="99" y="172" width="216" height="235"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oDa-Lv-dNK">
                                 <rect key="frame" x="132" y="415" width="151" height="79"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -378,19 +369,13 @@
                                     <segue destination="KJV-JY-q9A" kind="show" id="7Ha-mc-PjB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FuL-D5-vTp">
-                                <rect key="frame" x="132" y="559" width="151" height="79"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Account Has Been Created!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSe-O4-eKU">
+                                <rect key="frame" x="99" y="172" width="216" height="235"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Go To Menu" cornerStyle="medium">
-                                    <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                    </backgroundConfiguration>
-                                </buttonConfiguration>
-                                <connections>
-                                    <segue destination="c8E-YQ-1aM" kind="show" id="MeI-fI-sAz"/>
-                                </connections>
-                            </button>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CKS-HL-yxR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -399,7 +384,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Jp-LN-Lx6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1778" y="1"/>
+            <point key="canvasLocation" x="1816" y="-317"/>
         </scene>
         <!--Log In-->
         <scene sceneID="1Zx-Zy-G5q">
@@ -614,8 +599,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="lBO-t3-ged"/>
-        <segue reference="kMj-Pl-CuF"/>
+        <segue reference="SUR-nt-jnI"/>
         <segue reference="3pf-md-vpz"/>
     </inferredMetricsTieBreakers>
     <resources>

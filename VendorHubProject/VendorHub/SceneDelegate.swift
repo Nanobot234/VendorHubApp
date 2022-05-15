@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         //let initialView = storyboard.instantiateViewController(withIdentifier: "vendorItemsList")
         
-        //window?.rootViewController = initialView
+      //  window?.rootViewController = initialView
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

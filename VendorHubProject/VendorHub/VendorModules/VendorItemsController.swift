@@ -17,6 +17,10 @@ class VendorItemsController: UIViewController {
     
     @IBOutlet weak var table: UITableView!
     
+    @IBOutlet weak var TableViewEdit: UIBarButtonItem!
+    
+    @IBOutlet weak var addItem: UIBarButtonItem!
+    
     override func viewDidLoad() {
        
         super.viewDidLoad()
@@ -46,30 +50,22 @@ class VendorItemsController: UIViewController {
             
         }
     }
+
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //not needed as of now since will use..
-    }
-        //idea is to have   table view, with all the list of items,
-    /*
-    // MARK: - Navigation
-
-        //make new vew contgroller
-     
-     //this here wil go to storyboard
-     func switchStoryboard() {
-         let storyboard = UIStoryboard(name: "NameOfStoryboard", bundle: nil)
-         let controller = storyboard.instantiateViewController(withIdentifier: "ViewControllerName") as UIViewController
-
-         self.present(controller, animated: true, completion: nil)
-     }
-     
-     funv
-   
-    */
+    @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
+        
+        if table.isEditing {
+                   table.setEditing(false, animated: true)
+                   sender.title = "Edit"
+                   addItem.isEnabled = true
+               } else {
+                   table.setEditing(true, animated: true)
+                   sender.title = "Done"
+                   addItem.isEnabled = false
+               }
+           }
     
-    //trying to have it then when the ui loads, if have current user then just swiutch to this
-
+    
 }
 
 extension VendorItemsController:UITableViewDelegate,UITableViewDataSource {
@@ -86,6 +82,8 @@ extension VendorItemsController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ table: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = table.dequeueReusableCell(withIdentifier:"cell",for: indexPath) as? ItemDisplayCell {
             cell.DescriptionLabel?.text = VendorItems.Items[indexPath.row].itemDescription
+            
+            
             print(cell.DescriptionLabel.text!)
             cell.PriceLabel?.text = VendorItems.Items[indexPath.row].price
             
