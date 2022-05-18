@@ -102,10 +102,10 @@
             </objects>
             <point key="canvasLocation" x="2738" y="778"/>
         </scene>
-        <!--vendorLocations-->
+        <!--SpotVendor-->
         <scene sceneID="mL7-zY-GjH">
             <objects>
-                <viewControllerPlaceholder storyboardName="vendorLocations" id="y6Q-Jf-Awc" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="SpotVendor" id="y6Q-Jf-Awc" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Z48-l9-RyB"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KCF-sj-9U5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
