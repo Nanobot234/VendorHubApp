@@ -329,6 +329,7 @@
 				F2A00BF727D42C270068024F /* Frameworks */,
 				F2A00BF827D42C270068024F /* Resources */,
 				148062239D5289060F825B21 /* [CP] Embed Pods Frameworks */,
+				29B23B3EEAFEA06932D1F2FA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -367,6 +368,7 @@
 				F2A00C1727D42C2B0068024F /* Frameworks */,
 				F2A00C1827D42C2B0068024F /* Resources */,
 				5EA61DEEFE0C05D0FC43E5D2 /* [CP] Embed Pods Frameworks */,
+				DDF2A340F010C642BFF8451E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -493,6 +495,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VendorHub/Pods-VendorHub-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		29B23B3EEAFEA06932D1F2FA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VendorHub/Pods-VendorHub-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VendorHub/Pods-VendorHub-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VendorHub/Pods-VendorHub-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3BD5677EB7F0817EED67C61B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -552,6 +571,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VendorHub-VendorHubUITests/Pods-VendorHub-VendorHubUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DDF2A340F010C642BFF8451E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VendorHub-VendorHubUITests/Pods-VendorHub-VendorHubUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VendorHub-VendorHubUITests/Pods-VendorHub-VendorHubUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VendorHub-VendorHubUITests/Pods-VendorHub-VendorHubUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
