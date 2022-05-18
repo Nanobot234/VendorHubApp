@@ -13,7 +13,7 @@ class VendorOrderDetailsController: UIViewController {
     
     @IBOutlet weak var orderdetailsTable: UITableView!
     
-    var image = UIImage()
+ 
     
     var orderItems = [cartItem]() //then will pass the item here
     
@@ -25,6 +25,12 @@ class VendorOrderDetailsController: UIViewController {
         // Do any additional setup after loading the view.
         orderdetailsTable.dataSource = self
         orderdetailsTable.delegate = self
+    }
+    
+    
+    @IBAction func cancelButtonPressed(_ sender: Any) {
+        
+        dismiss(animated: true)
     }
     
     

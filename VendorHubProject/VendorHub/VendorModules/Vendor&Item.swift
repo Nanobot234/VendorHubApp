@@ -14,14 +14,15 @@ struct Item {
     var id: String
     var itemDescription: String
     var price: String
+    var itemID: String
     
     //var details: String
     
-    init(_ dictionary: [String: Any]) {
+    init(_ dictionary: [String: Any],itemID:String) {
         self.itemDescription = dictionary["ItemDescription"] as! String? ?? ""
         self.price = dictionary["ItemPrice"] as? String ?? ""
         self.id = dictionary["Image"] as? String ?? ""
-        
+        self.itemID = itemID
         //add image here also the price as well
     }
 }
@@ -50,16 +51,18 @@ class Vendor {
     //function to load Itme 
     
     func loadItemsData(completed: @escaping (_ dataGet: Bool) -> Void) {
+        
+      
         db.collection("Vendor").document(currentUser.currentUser!.uid).collection("Items").addSnapshotListener {(QuerySnapshot, Error) in
             guard Error == nil else {
                 print("Error getting data")
                 return completed(false)
             }
-           
+            self.Items = []
             for document in QuerySnapshot!.documents {
                 print(document.data())
                 //put the item id for every item as well, then can check if its!!
-                let item = Item.init(document.data())
+                let item = Item.init(document.data(),itemID: document.documentID)
                 self.Items.append(item)
             }
             print("Done Here")

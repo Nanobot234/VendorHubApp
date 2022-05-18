@@ -38,7 +38,7 @@ extension UserDefaults {
                // Create JSON Decoder
                let decoder = JSONDecoder()
 
-               // Decode Note
+               // Decode
             let cartData = try decoder.decode([cartItem].self, from: data)
                 
             return cartData
@@ -48,5 +48,15 @@ extension UserDefaults {
            }
     }
         return nil
+    }
+    
+    //get the key for the
+    func deleteItembyIndex(index:Int,userID:String) {
+        
+        var cartItems = decodeCartData(key: userID)
+        
+        cartItems?.remove(at:index)
+        
+        encodeCartData(data: cartItems!, key: userID)
     }
 }

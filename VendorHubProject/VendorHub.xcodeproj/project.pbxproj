@@ -11,6 +11,10 @@
 		BC5FA7E748E94CFD1DCC4641 /* Pods_VendorHub_VendorHubUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDC91627E5FC3F700F7F0D75 /* Pods_VendorHub_VendorHubUITests.framework */; };
 		F206084127E8BC890028123C /* CustomerHomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F206084027E8BC890028123C /* CustomerHomePageController.swift */; };
 		F2143ED128071106005BFA36 /* ItemsDescriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2143ED028071106005BFA36 /* ItemsDescriptionController.swift */; };
+		F2429B6D283507E900BC2BBF /* CustomerOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2429B6C283507E900BC2BBF /* CustomerOrderController.swift */; };
+		F2429B6F2835080500BC2BBF /* CustomerOrderDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2429B6E2835080500BC2BBF /* CustomerOrderDetailsController.swift */; };
+		F2429B712835084200BC2BBF /* CustomerOrderStoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2429B702835084200BC2BBF /* CustomerOrderStoreCell.swift */; };
+		F2429B73283513E300BC2BBF /* CustomerOrderDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2429B72283513E300BC2BBF /* CustomerOrderDetailsCell.swift */; };
 		F246F5D1282E04AF00B7A1EA /* UserChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F246F5D0282E04AF00B7A1EA /* UserChoiceViewController.swift */; };
 		F246F5D3282F216600B7A1EA /* VendorOrderDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F246F5D2282F216600B7A1EA /* VendorOrderDetailsController.swift */; };
 		F246F5D5282F245900B7A1EA /* OrderNumandDistanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F246F5D4282F245900B7A1EA /* OrderNumandDistanceCell.swift */; };
@@ -31,7 +35,6 @@
 		F2AE7A97281A05A3000767E7 /* NukeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AE7A96281A05A3000767E7 /* NukeImage.swift */; };
 		F2B2DDBC282B271A0066CB02 /* VendorOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B2DDBB282B271A0066CB02 /* VendorOrderController.swift */; };
 		F2B493F727F358EE00F6B108 /* CustomerSignUpLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B493F627F358EE00F6B108 /* CustomerSignUpLoginController.swift */; };
-		F2C124F0281B294E00E9AD99 /* ProfileSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C124EF281B294E00E9AD99 /* ProfileSettingsController.swift */; };
 		F2C9D89628243EC60020F111 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C9D89528243EC60020F111 /* UserDefaultsExtension.swift */; };
 		F2C9D8982825C7F00020F111 /* CartItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C9D8972825C7F00020F111 /* CartItemCell.swift */; };
 		F2C9D89A2825CA660020F111 /* FirestoreOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C9D8992825CA660020F111 /* FirestoreOps.swift */; };
@@ -78,6 +81,10 @@
 		E89D759EBD26C315F9DC440C /* Pods-VendorHub-VendorHubUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VendorHub-VendorHubUITests.release.xcconfig"; path = "Target Support Files/Pods-VendorHub-VendorHubUITests/Pods-VendorHub-VendorHubUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F206084027E8BC890028123C /* CustomerHomePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerHomePageController.swift; sourceTree = "<group>"; };
 		F2143ED028071106005BFA36 /* ItemsDescriptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsDescriptionController.swift; sourceTree = "<group>"; };
+		F2429B6C283507E900BC2BBF /* CustomerOrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerOrderController.swift; sourceTree = "<group>"; };
+		F2429B6E2835080500BC2BBF /* CustomerOrderDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerOrderDetailsController.swift; sourceTree = "<group>"; };
+		F2429B702835084200BC2BBF /* CustomerOrderStoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerOrderStoreCell.swift; sourceTree = "<group>"; };
+		F2429B72283513E300BC2BBF /* CustomerOrderDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerOrderDetailsCell.swift; sourceTree = "<group>"; };
 		F246F5D0282E04AF00B7A1EA /* UserChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChoiceViewController.swift; sourceTree = "<group>"; };
 		F246F5D2282F216600B7A1EA /* VendorOrderDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorOrderDetailsController.swift; sourceTree = "<group>"; };
 		F246F5D4282F245900B7A1EA /* OrderNumandDistanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderNumandDistanceCell.swift; sourceTree = "<group>"; };
@@ -102,7 +109,6 @@
 		F2AE7A96281A05A3000767E7 /* NukeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NukeImage.swift; sourceTree = "<group>"; };
 		F2B2DDBB282B271A0066CB02 /* VendorOrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorOrderController.swift; sourceTree = "<group>"; };
 		F2B493F627F358EE00F6B108 /* CustomerSignUpLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerSignUpLoginController.swift; sourceTree = "<group>"; };
-		F2C124EF281B294E00E9AD99 /* ProfileSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsController.swift; sourceTree = "<group>"; };
 		F2C9D89528243EC60020F111 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		F2C9D8972825C7F00020F111 /* CartItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemCell.swift; sourceTree = "<group>"; };
 		F2C9D8992825CA660020F111 /* FirestoreOps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreOps.swift; sourceTree = "<group>"; };
@@ -270,12 +276,15 @@
 			isa = PBXGroup;
 			children = (
 				F206084027E8BC890028123C /* CustomerHomePageController.swift */,
-				F2C124EF281B294E00E9AD99 /* ProfileSettingsController.swift */,
 				F2CDDFB227F93856000434BB /* ItemPriceDescriptionController.swift */,
 				F2F5D3B927EC0EAA00586DC0 /* CustomerUserFlow.storyboard */,
 				F2FA220B2822BFF6008413C3 /* CustomerCartController.swift */,
 				F2C9D8972825C7F00020F111 /* CartItemCell.swift */,
+				F2429B6C283507E900BC2BBF /* CustomerOrderController.swift */,
+				F2429B6E2835080500BC2BBF /* CustomerOrderDetailsController.swift */,
 				F2B493F627F358EE00F6B108 /* CustomerSignUpLoginController.swift */,
+				F2429B702835084200BC2BBF /* CustomerOrderStoreCell.swift */,
+				F2429B72283513E300BC2BBF /* CustomerOrderDetailsCell.swift */,
 				F24B03C727DEE518006ECF31 /* Customer.swift */,
 				F2E2F39F27F1160600B6BDA0 /* Collection Cells */,
 				F2E2F3A027F11F9500B6BDA0 /* TableViewCells */,
@@ -552,14 +561,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2C124F0281B294E00E9AD99 /* ProfileSettingsController.swift in Sources */,
 				F246F5D5282F245900B7A1EA /* OrderNumandDistanceCell.swift in Sources */,
+				F2429B6D283507E900BC2BBF /* CustomerOrderController.swift in Sources */,
+				F2429B712835084200BC2BBF /* CustomerOrderStoreCell.swift in Sources */,
 				F246F5D1282E04AF00B7A1EA /* UserChoiceViewController.swift in Sources */,
 				F2A00C0227D42C270068024F /* ViewController.swift in Sources */,
 				F2C9D89A2825CA660020F111 /* FirestoreOps.swift in Sources */,
 				F2C9D8982825C7F00020F111 /* CartItemCell.swift in Sources */,
 				F25D693D27E2EB0900631EF8 /* ApiKeys.swift in Sources */,
 				F2C9D89628243EC60020F111 /* UserDefaultsExtension.swift in Sources */,
+				F2429B6F2835080500BC2BBF /* CustomerOrderDetailsController.swift in Sources */,
 				F2A701A72815996B00CA0DC9 /* Vendor&Item.swift in Sources */,
 				F2E2F3A227F1528900B6BDA0 /* TableViewCell.swift in Sources */,
 				F2A00BFE27D42C270068024F /* AppDelegate.swift in Sources */,
@@ -570,6 +581,7 @@
 				F246F5D7282F248C00B7A1EA /* OrderDetailsCell.swift in Sources */,
 				F2CDDFB327F93856000434BB /* ItemPriceDescriptionController.swift in Sources */,
 				F2ED1E5028203F5500DB7DDA /* CustomerTabBarController.swift in Sources */,
+				F2429B73283513E300BC2BBF /* CustomerOrderDetailsCell.swift in Sources */,
 				F2B2DDBC282B271A0066CB02 /* VendorOrderController.swift in Sources */,
 				F206084127E8BC890028123C /* CustomerHomePageController.swift in Sources */,
 				F2AE7A97281A05A3000767E7 /* NukeImage.swift in Sources */,

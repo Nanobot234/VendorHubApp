@@ -68,7 +68,7 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
         
         cell.orderNumLabel.text = "Order Num" + self.customerOrders[indexPath.row].orderNum
         
-        
+        //hope to add distance label as well
         return cell
     }
 
@@ -78,14 +78,14 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             //here instantiate the other view controller and pass the selected customer to it!!
-        var orderDetailsVC = vendorBoard.instantiateViewController(withIdentifier: "customerorderItems") as! VendorOrderDetailsController
+        let orderDetailsVC = vendorBoard.instantiateViewController(withIdentifier: "customerorderItems") as! VendorOrderDetailsController
         //then will work form there
         
         //gettign the items for the customer that you selected
         orderDetailsVC.orderItems = self.customerOrders[indexPath.row].customerItems
             //need to get the order 
         
-      //  navigationController?.pushViewController(orderDetailsVC, animated: true)
+      
         
         navigationController?.present(orderDetailsVC, animated: true, completion: nil)
     }

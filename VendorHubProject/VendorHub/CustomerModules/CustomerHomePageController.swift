@@ -10,6 +10,8 @@ import UIKit
 import FirebaseFirestore
 import Firebase
 import simd
+import MapKit
+import CoreLocation
 
 //need to make a function that grabs those images, anfd then!!!
 
@@ -32,6 +34,7 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet var table: UITableView!
     // var itemController:CustomerHomePageController
     @IBOutlet weak var SignOutButton: UIBarButtonItem!
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -62,6 +65,7 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
       
     }
     
+    //signing out//need to USe Unwind .
     @IBAction func gotoHome(_ sender: Any) {
         do {
             try auth.signOut()

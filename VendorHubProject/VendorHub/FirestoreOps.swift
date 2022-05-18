@@ -39,23 +39,18 @@ class FirestoreOps {
     static func setOrderItem(customerID:String,iteminfo:[cartItem],completed:@escaping (Bool) -> Void) {
         //idea is that for each cart item will store order  in the respecitve place giver the vendorID
         
-        //so if have 1,2,3 from vendor1 andf 4 5 from
-        
-        //store as an array then add the data
         let orderNum = UUID().uuidString.prefix(4)
         //unique so array isnt overwritten
         //save the vendor
         for item in iteminfo{
-            var vendorID = item.vendorID!
-            //now make an array
-            //make a ranodm code, just to store the different array and have their feidls
+            let vendorID = item.vendorID!
             
-    
             let itemPlace = UUID().uuidString.prefix(3)
             var itemArray = [String]()
             itemArray.append(item.itemPrice)
             itemArray.append(item.itemDescription)
             itemArray.append(item.imageURL!)
+            
             
             //TODO: Set the Order Total, here by getting setting the feild previously, then adding to it for each order item??
             
@@ -63,12 +58,7 @@ class FirestoreOps {
             db.collection("Vendor").document(vendorID).collection("Current Orders")
                 .document(String(orderNum)).setData([String(itemPlace):itemArray], merge: true)
             
-            //for customer also save the location coordinates, of that particular vendor??
-            
-            //will need to grab the customer ID as well, to place it in the correct place
-            
-//Saving the order for cutomer is different
-            
+          
             getVendorName(vendorID: vendorID) { name in
                 
                 db.collection("Customer").document(customerID).collection("Current Orders").document(String(orderNum)).setData([String(itemPlace):itemArray,"VendorName":name], merge: true)
@@ -123,7 +113,7 @@ class FirestoreOps {
         var customerArray = [Customer]()
         //once again, lol make a customer, for each different vendor, and the databse organizes it by vendor
         
-        db.collection("Customers").document(customerID).collection("Current Orders").addSnapshotListener { snapshot, error in
+        db.collection("Customer").document(customerID).collection("Current Orders").addSnapshotListener { snapshot, error in
             
             for document in snapshot!.documents {
                 let newCustomer = Customer(input: document.data() , CustorderNum: document.documentID)
@@ -145,6 +135,10 @@ class FirestoreOps {
         return image!
     }
     
-    
+    //delete an item from the Vendor
+    static func deleteVendorItem(vendorID:String, itemID:String) {
+        
+        db.collection("Vendor").document(vendorID).collection("Items").document(itemID).delete()
+    }
     
 }

@@ -115,7 +115,7 @@ class CustomerSignUpLoginController: UIViewController {
                     self.CreateUserError.text = "User Already Exists With Those Credentials"
                     print("Wrong")
                 } else {
-                    self.db.collection("Customers").document((result?.user.uid)!).setData(["Name":self.customerName.text!,"Longitude":0.0, "Latitude":0.0,"accountType":"customer"], merge: true)
+                    self.db.collection("Customer").document((result?.user.uid)!).setData(["Name":self.customerName.text!,"Longitude":0.0, "Latitude":0.0,"accountType":"customer"], merge: true)
                     
                     self.performSegue(withIdentifier: "accountCreatedSegue", sender: self)
                     

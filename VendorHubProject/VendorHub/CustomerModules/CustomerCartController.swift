@@ -16,6 +16,7 @@ class CustomerCartController: UIViewController {
     //in this classwill
     @IBOutlet weak var cartTable: UITableView!
     
+    @IBOutlet weak var PlaceOrderButton: UIBarButtonItem!
     override func viewWillAppear(_ animated: Bool) {
         let userDefaults = UserDefaults.standard
         //show something if you have cart data only
@@ -37,6 +38,43 @@ class CustomerCartController: UIViewController {
         
     }
     
+    
+    @IBAction func CartEditPressed(_ sender: UIBarButtonItem) {
+      
+    
+        if cartTable.isEditing {
+                   cartTable.setEditing(false, animated: true)
+                   sender.title = "Edit"
+                   PlaceOrderButton.isEnabled = true
+               } else {
+                   cartTable.setEditing(true, animated: true)
+                   sender.title = "Done"
+                   PlaceOrderButton.isEnabled = false
+               }
+    }
+    
+    func deleteItemCheck(indexPath: IndexPath) {
+        let alert = UIAlertController(title: nil, message: "Are you sure you'd like to delete this item from your cart", preferredStyle: .alert)
+
+        let userDefaults = UserDefaults.standard
+        // yes action
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { _ in
+            // replace data variable with your own data array
+            userDefaults.deleteItembyIndex(index: indexPath.row, userID:(self.auth.currentUser?.uid)!)
+            self.CustomerCart.cartItems = userDefaults.decodeCartData(key: (self.auth.currentUser?.uid)!)!
+            self.cartTable.deleteRows(at: [indexPath], with: .fade)
+          
+            
+        }
+
+        alert.addAction(yesAction)
+
+        // cancel action
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func placeOrder(_ sender: Any) {
         
         //loop through cart , then make an order depending on the vendor,
@@ -46,6 +84,8 @@ class CustomerCartController: UIViewController {
         FirestoreOps.setOrderItem(customerID: auth.currentUser!.uid,iteminfo: CustomerCart.cartItems) { finished in
             if finished {
                 print("Sent Items to Vendor")
+                self.CustomerCart.cartItems = []
+                self.cartTable.reloadData()
             }
         }
                
@@ -53,18 +93,6 @@ class CustomerCartController: UIViewController {
     }
     
     
-    
-    //function to get the vendor items from userDefaulkts
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
 
 extension CustomerCartController: UITableViewDelegate, UITableViewDataSource {
@@ -100,5 +128,11 @@ extension CustomerCartController: UITableViewDelegate, UITableViewDataSource {
         return CustomerCart.cartItems.count
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deleteItemCheck(indexPath: indexPath)
+        }
+       
+    }
     
 }

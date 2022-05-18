@@ -75,7 +75,7 @@ class ViewController: UIViewController {
             if error != nil {
                 self.VendorSignUpError.text = "User Already Exists With Those Credentials"
             } else {
-                self.db.collection("Vendor").document((result?.user.uid)!).setData(["name":self.vendorName.text!,"email":self.vendorEmail.text!,"accountType":"Vendor"])
+                self.db.collection("Vendor").document((result?.user.uid)!).setData(["Store name":self.vendorName.text!,"accountType":"Vendor"])
                 self.performSegue(withIdentifier: "signUp", sender: self)
             }
         }

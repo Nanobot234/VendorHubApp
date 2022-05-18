@@ -10,8 +10,6 @@ import UIKit
 class UserChoiceViewController: UIViewController {
 
     
-    
-    
     override func viewDidAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
     }
@@ -28,7 +26,9 @@ class UserChoiceViewController: UIViewController {
         
     }
     
-
+    @IBAction func unwind( _ seg:UIStoryboardSegue) {
+        
+    }
     /*
     // MARK: - Navigation
 

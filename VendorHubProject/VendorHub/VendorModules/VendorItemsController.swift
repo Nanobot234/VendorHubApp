@@ -39,19 +39,29 @@ class VendorItemsController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         //need to chheck if there are any documents here...
         super.viewDidAppear(animated)
-        self.VendorItems.Items = []
+       
         
         //snapshot listener that listens for changesx
         VendorItems.loadItemsData { dataGet in
             
                 self.table.reloadData()
             
-                
-            
         }
     }
 
     
+    @IBAction func VendroSignOut(_ sender: Any) {
+        
+        do {
+            try auth.signOut()
+            performSegue(withIdentifier: "unwindtoHome", sender: self)
+        } catch {
+            print(error.localizedDescription)
+        }
+       
+    }
+    
+    //when b
     @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
         
         if table.isEditing {
@@ -65,8 +75,30 @@ class VendorItemsController: UIViewController {
                }
            }
     
+    func deleteItemCheck(indexPath: IndexPath) {
+        let alert = UIAlertController(title: nil, message: "Are you sure you'd like to delete this item", preferredStyle: .alert)
+
+        // yes action
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { _ in
+            // replace data variable with your own data array
+            FirestoreOps.deleteVendorItem(vendorID: (self.auth.currentUser?.uid)!, itemID: self.VendorItems.Items[indexPath.row].itemID)
+            self.VendorItems.Items.remove(at: indexPath.row)
+           self.table.deleteRows(at: [indexPath], with: .fade)
+            
+        }
+
+        alert.addAction(yesAction)
+
+        // cancel action
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        present(alert, animated: true, completion: nil)
+    }
     
 }
+
+
+
 
 extension VendorItemsController:UITableViewDelegate,UITableViewDataSource {
    
@@ -88,6 +120,8 @@ extension VendorItemsController:UITableViewDelegate,UITableViewDataSource {
             cell.PriceLabel?.text = VendorItems.Items[indexPath.row].price
             
             cell.itemImage?.setImage(VendorItems.Items[indexPath.row].id)
+            
+            
          //   print(cell.PriceLabel.text)
         return cell
         }
@@ -95,6 +129,13 @@ extension VendorItemsController:UITableViewDelegate,UITableViewDataSource {
     }
     
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deleteItemCheck(indexPath: indexPath)
+        }
+       
+    }
     
+   
 }
 
