@@ -64,18 +64,17 @@ class ViewController: UIViewController {
     
     @IBAction func sendVendorInfoToFirebase(_ sender: UIButton) {
         //make a classs in swift herer, then
-    
-        
-    //firestore data
-        
 
-
+        
         auth.createUser(withEmail: vendorEmail.text!, password: vendorPassword.text!) {
             (result,error) in
             if error != nil {
                 self.VendorSignUpError.text = "User Already Exists With Those Credentials"
             } else {
-                self.db.collection("Vendor").document((result?.user.uid)!).setData(["Store name":self.vendorName.text!,"accountType":"Vendor"])
+                self.db.collection("Vendor").document((result?.user.uid)!).setData(["StoreName":self.vendorName.text!,"accountType":"Vendor"])
+                
+                self.db.collection("Vendor").document((result?.user.uid)!).collection("Items")
+                
                 self.performSegue(withIdentifier: "signUp", sender: self)
             }
         }

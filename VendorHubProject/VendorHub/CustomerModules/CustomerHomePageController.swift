@@ -15,7 +15,7 @@ import CoreLocation
 
 //need to make a function that grabs those images, anfd then!!!
 
-class CustomerHomePageController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CustomerHomePageController: UIViewController, UITableViewDataSource, UITableViewDelegate ,CLLocationManagerDelegate {
     
     
     var vendorItems = [Model]()
@@ -27,9 +27,9 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
     var imageData:Data!
     let mystoryboard = UIStoryboard(name:"CustomerUserFlow" , bundle: nil)
     let homeStoryboard = UIStoryboard(name:"Main" , bundle: nil)
-    
+    let locationManager = CLLocationManager()
     var imagetoSend:UIImage!
-   
+    
     
     @IBOutlet var table: UITableView!
     // var itemController:CustomerHomePageController
@@ -50,19 +50,25 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
             DispatchQueue.main.async {
                 self.table.reloadData()
             }
-           
+            
         }
         
-       
+        
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         table.register(CollectionTableViewCell.nib(), forCellReuseIdentifier: CollectionTableViewCell.identifier)
         table.delegate = self
         table.dataSource = self
-      
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
     }
     
     //signing out//need to USe Unwind .
@@ -73,11 +79,17 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
             let customerChoiceVC = homeStoryboard.instantiateViewController(withIdentifier: "customerOption")
             
             navigationController?.pushViewController(customerChoiceVC, animated: true)
-           
+            
         } catch {
             print(error.localizedDescription)
         }
         
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        //save this to databse thenn
     }
     
     //gets all the vendor data fornow, should marcha certain description
@@ -92,36 +104,45 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
             }
             
             let group = DispatchGroup()
-
-                group.enter()
+            
+            //   group.enter()
             //looping through all the vendors that youve gotten
+            group.enter()
+            var documentCount = QuerySnapshot?.documents.count
+            var i = 0
             for document in QuerySnapshot!.documents {
+                
                 print("Second Here")
                 print(document.documentID)
                 self.vendorIDS.append(document.documentID) //get the ids of all the vendors
                 //get the name
-                let vendorName = document.get("Store name")
+                let vendorName = document.get("StoreName")
                 self.vendorNames.append(vendorName as! String)
+                
                 self.getVendorItems(document.documentID) { data in
+                    i += 1
                     print("Vendor Items Completion")
                     itemsArray.append(contentsOf: data)
                     
-                    group.leave()
+                  
+                    print("i \(i)")
+                    print("Document Count: \(documentCount!)")
+                  
+                    //make sure i and doccount are the same
+                    if(i == documentCount!) {
+                   group.leave()
+                    }
+                    
                 }
-                
-                
+        
             }
-            
+
             print("Completed Here")
             group.notify(queue : DispatchQueue.global()) {
-                    completed(itemsArray)
-                }
+                print("Items grabbed")
+                completed(itemsArray)
+            }
         }
-        
-        //
-        
-        
-        
     }
     
     //get the vendor items for the specified vendor
@@ -129,6 +150,7 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
         
         var itemsArray = [Model]()
         
+        //check whether the path exists
         self.db.collection("Vendor").document(docID).collection("Items").getDocuments { querySnapsht, Error in
             guard Error == nil else {
                 print("Error with Items")
@@ -136,6 +158,7 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
             }
             print("Hello World")
             print(querySnapsht!.documents.count)
+            
             for document in querySnapsht!.documents {
                 
                 let model = Model(document.data())
@@ -143,10 +166,12 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
             }
             completed(itemsArray)
         }
+        
+        
     }
     
     
-   ///Table View Metho
+    ///Table View Metho
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1 //
@@ -164,14 +189,14 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = table.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
-            
+        
         cell.tableCellIndexPath = indexPath.row
         //puts the test items in the
         cell.configure(with: testItems) //puts the items in the collectionView?
-            //here is where it puhts items in collection viee
-            
+        //here is where it puhts items in collection viee
+        
         cell.cellDelegate = self
-            return cell
+        return cell
         
         
         //      return UITableViewCell()
@@ -199,7 +224,7 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
     
     //this ia going to be the image that we are getting from firebase, for the ros
     
-
+    
     
 }
 
@@ -230,13 +255,13 @@ extension CustomerHomePageController:CollectionViewCellDelegate  {
     
     func collectionView(collectionviewcell: CollectionViewCell?, index: Int, didTappedInTableViewCell: CollectionTableViewCell) {
         
-   
+        
         let itemVC = storyboard?.instantiateViewController(withIdentifier: "imageDetailsView") as! ItemPriceDescriptionController
         
         itemVC.image = (collectionviewcell?.myImage.image)!
         //also set the image url, that will be saved..
         
-    
+        
         itemVC.itemDescriptionText = collectionviewcell!.itemDescription
         
         itemVC.itemPriceText = "$" + collectionviewcell!.itemPrice
@@ -252,7 +277,7 @@ extension CustomerHomePageController:CollectionViewCellDelegate  {
         //sets the vendor id here
         itemVC.vendorID = vendorIDS[selectedIndex]
         
-        //then get the current price 
+        //then get the current price
         navigationController?.pushViewController(itemVC, animated: true)
         //to pass the correct item description will take the
         

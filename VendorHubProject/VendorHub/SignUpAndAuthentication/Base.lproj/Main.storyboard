@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="bgz-qj-CaY">
             <objects>
-                <viewController modalPresentationStyle="currentContext" id="Smb-Qn-HQm" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Smb-Qn-HQm" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XaI-IQ-jYI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,6 +36,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwg-V0-rGD">
+                                <rect key="frame" x="132" y="548" width="151" height="79"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Go Home" cornerStyle="medium">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                    </backgroundConfiguration>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="5Vc-I8-mc4" kind="show" id="0bW-3P-M4K"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EcC-Qo-TqX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -351,9 +364,9 @@
         <!--View Controller-->
         <scene sceneID="JZm-yw-sxo">
             <objects>
-                <viewController id="DRl-pB-zCc" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="DRl-pB-zCc" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LAh-of-xS7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oDa-Lv-dNK">
@@ -455,7 +468,7 @@
         <!--View Controller-->
         <scene sceneID="XTF-Oj-Yu8">
             <objects>
-                <viewController id="5Vc-I8-mc4" customClass="ViewController" customModule="VendorHub" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="5Vc-I8-mc4" customClass="ViewController" customModule="VendorHub" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZIv-a0-quW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -508,7 +521,7 @@
             <objects>
                 <viewController id="aSY-CZ-tQE" customClass="ViewController" customModule="VendorHub" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MuM-bs-lMr">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Your Store Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zbM-Qi-VKd">
@@ -548,27 +561,6 @@
                                     <action selector="sendVendorInfoToFirebase:" destination="aSY-CZ-tQE" eventType="touchUpInside" id="fMN-Qj-FWD"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnk-i4-tA1">
-                                <rect key="frame" x="112" y="469" width="68" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kkb-7w-9gE">
-                                <rect key="frame" x="112" y="356" width="68" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaI-NY-eLf">
-                                <rect key="frame" x="112" y="247" width="68" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJZ-20-nVS">
                                 <rect key="frame" x="144" y="586" width="113" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -582,10 +574,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Sign Up" largeTitleDisplayMode="always" id="NE9-GY-Ewq"/>
                     <connections>
-                        <outlet property="EmailError" destination="Kkb-7w-9gE" id="CSo-ON-hkf"/>
-                        <outlet property="PasswordError" destination="tnk-i4-tA1" id="7Px-WI-ydI"/>
                         <outlet property="VendorSignUpError" destination="kJZ-20-nVS" id="qg5-SI-Oyl"/>
-                        <outlet property="emailError" destination="aaI-NY-eLf" id="1OR-6f-TFm"/>
                         <outlet property="vendorEmail" destination="cNM-zg-1G0" id="uGU-8f-7KZ"/>
                         <outlet property="vendorLogInButton" destination="8hl-Gg-pcA" id="0BM-RP-3fm"/>
                         <outlet property="vendorName" destination="zbM-Qi-VKd" id="1LD-WH-edK"/>
@@ -595,12 +584,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2gb-Mm-gag" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="344.92753623188406" y="657.58928571428567"/>
+            <point key="canvasLocation" x="533" y="646"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SUR-nt-jnI"/>
-        <segue reference="3pf-md-vpz"/>
+        <segue reference="0bW-3P-M4K"/>
+        <segue reference="7Ha-mc-PjB"/>
+        <segue reference="yK6-Wi-3PY"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
