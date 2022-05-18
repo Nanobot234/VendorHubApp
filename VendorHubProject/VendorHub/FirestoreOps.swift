@@ -22,7 +22,7 @@ class FirestoreOps {
             
         vendors.document(vendorID).getDocument { document, error in
             if(error == nil){
-                 let vendorName = document?.get("Store name") as! String
+                 let vendorName = document?.get("StoreName") as! String
                 //a sync call here
                 completed(vendorName)
                 
