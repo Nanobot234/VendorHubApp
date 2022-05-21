@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		06AA97049D5C73075AB9A2A2 /* Pods_VendorHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FCBF4FB036B25C32F8BAA42 /* Pods_VendorHub.framework */; };
+
 		A967F3922835605B0096DAFE /* SpotVendor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A967F3912835605B0096DAFE /* SpotVendor.storyboard */; };
 		A967F394283562CF0096DAFE /* VendorLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A967F393283562CF0096DAFE /* VendorLocation.swift */; };
 		A967F39628356A4C0096DAFE /* LocationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A967F39528356A4C0096DAFE /* LocationListViewController.swift */; };
 		A967F3982835789A0096DAFE /* SpotDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A967F3972835789A0096DAFE /* SpotDetailViewController.swift */; };
 		A967F39A2835DAC40096DAFE /* MyLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A967F3992835DAC40096DAFE /* MyLocationViewController.swift */; };
 		A967F39E2835F0B40096DAFE /* MyCurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A967F39D2835F0B40096DAFE /* MyCurrentLocationViewController.swift */; };
+
 		BC5FA7E748E94CFD1DCC4641 /* Pods_VendorHub_VendorHubUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDC91627E5FC3F700F7F0D75 /* Pods_VendorHub_VendorHubUITests.framework */; };
 		F206084127E8BC890028123C /* CustomerHomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F206084027E8BC890028123C /* CustomerHomePageController.swift */; };
 		F2143ED128071106005BFA36 /* ItemsDescriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2143ED028071106005BFA36 /* ItemsDescriptionController.swift */; };
@@ -82,12 +84,14 @@
 		73F16EAD02F858A7449B3FE6 /* Pods_VendorHubTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VendorHubTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F1C9CB7C99C77CB1010AFD3 /* Pods-VendorHubTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VendorHubTests.release.xcconfig"; path = "Target Support Files/Pods-VendorHubTests/Pods-VendorHubTests.release.xcconfig"; sourceTree = "<group>"; };
 		8FCBF4FB036B25C32F8BAA42 /* Pods_VendorHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VendorHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+
 		A967F3912835605B0096DAFE /* SpotVendor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SpotVendor.storyboard; sourceTree = "<group>"; };
 		A967F393283562CF0096DAFE /* VendorLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorLocation.swift; sourceTree = "<group>"; };
 		A967F39528356A4C0096DAFE /* LocationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListViewController.swift; sourceTree = "<group>"; };
 		A967F3972835789A0096DAFE /* SpotDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotDetailViewController.swift; sourceTree = "<group>"; };
 		A967F3992835DAC40096DAFE /* MyLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationViewController.swift; sourceTree = "<group>"; };
 		A967F39D2835F0B40096DAFE /* MyCurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCurrentLocationViewController.swift; sourceTree = "<group>"; };
+
 		BDC91627E5FC3F700F7F0D75 /* Pods_VendorHub_VendorHubUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VendorHub_VendorHubUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDD1C0B8DBF0B823E29D28DB /* Pods-VendorHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VendorHub.release.xcconfig"; path = "Target Support Files/Pods-VendorHub/Pods-VendorHub.release.xcconfig"; sourceTree = "<group>"; };
 		E89D759EBD26C315F9DC440C /* Pods-VendorHub-VendorHubUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VendorHub-VendorHubUITests.release.xcconfig"; path = "Target Support Files/Pods-VendorHub-VendorHubUITests/Pods-VendorHub-VendorHubUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -188,17 +192,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A967F390283560110096DAFE /* SpotVendor */ = {
-			isa = PBXGroup;
-			children = (
-				A967F3912835605B0096DAFE /* SpotVendor.storyboard */,
-				A967F393283562CF0096DAFE /* VendorLocation.swift */,
-				A967F39528356A4C0096DAFE /* LocationListViewController.swift */,
-				A967F3972835789A0096DAFE /* SpotDetailViewController.swift */,
-			);
-			path = SpotVendor;
-			sourceTree = "<group>";
-		};
 		F22B2FEC28131D68008AAEEF /* SignUpAndAuthentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,7 +205,6 @@
 		F2A00BF127D42C260068024F = {
 			isa = PBXGroup;
 			children = (
-				A967F390283560110096DAFE /* SpotVendor */,
 				F2A00BFC27D42C270068024F /* VendorHub */,
 				F2A00C1327D42C2B0068024F /* VendorHubTests */,
 				F2A00C1D27D42C2B0068024F /* VendorHubUITests */,
@@ -355,7 +347,7 @@
 				F2A00BF727D42C270068024F /* Frameworks */,
 				F2A00BF827D42C270068024F /* Resources */,
 				148062239D5289060F825B21 /* [CP] Embed Pods Frameworks */,
-				29B23B3EEAFEA06932D1F2FA /* [CP] Copy Pods Resources */,
+				DF040024F1C3F5F02431E669 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -394,7 +386,7 @@
 				F2A00C1727D42C2B0068024F /* Frameworks */,
 				F2A00C1827D42C2B0068024F /* Resources */,
 				5EA61DEEFE0C05D0FC43E5D2 /* [CP] Embed Pods Frameworks */,
-				DDF2A340F010C642BFF8451E /* [CP] Copy Pods Resources */,
+				CAC100D51D0CF2AFC7A66B7A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -454,7 +446,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A967F3922835605B0096DAFE /* SpotVendor.storyboard in Resources */,
 				F2A00C0A27D42C2A0068024F /* LaunchScreen.storyboard in Resources */,
 				F2A60A5C27DFEFC4007765A3 /* GoogleService-Info.plist in Resources */,
 				F2A00C0727D42C2A0068024F /* Assets.xcassets in Resources */,
@@ -522,23 +513,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VendorHub/Pods-VendorHub-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		29B23B3EEAFEA06932D1F2FA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VendorHub/Pods-VendorHub-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VendorHub/Pods-VendorHub-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VendorHub/Pods-VendorHub-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		3BD5677EB7F0817EED67C61B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -600,7 +574,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VendorHub-VendorHubUITests/Pods-VendorHub-VendorHubUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DDF2A340F010C642BFF8451E /* [CP] Copy Pods Resources */ = {
+		CAC100D51D0CF2AFC7A66B7A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -615,6 +589,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VendorHub-VendorHubUITests/Pods-VendorHub-VendorHubUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF040024F1C3F5F02431E669 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VendorHub/Pods-VendorHub-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VendorHub/Pods-VendorHub-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VendorHub/Pods-VendorHub-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -636,14 +627,14 @@
 				F2429B6F2835080500BC2BBF /* CustomerOrderDetailsController.swift in Sources */,
 				F2A701A72815996B00CA0DC9 /* Vendor&Item.swift in Sources */,
 				F2E2F3A227F1528900B6BDA0 /* TableViewCell.swift in Sources */,
+
 				A967F394283562CF0096DAFE /* VendorLocation.swift in Sources */,
 				A967F39E2835F0B40096DAFE /* MyCurrentLocationViewController.swift in Sources */,
+
 				F2A00BFE27D42C270068024F /* AppDelegate.swift in Sources */,
 				A967F39A2835DAC40096DAFE /* MyLocationViewController.swift in Sources */,
 				F2B493F727F358EE00F6B108 /* CustomerSignUpLoginController.swift in Sources */,
-				A967F39628356A4C0096DAFE /* LocationListViewController.swift in Sources */,
 				F2A00C0027D42C270068024F /* SceneDelegate.swift in Sources */,
-				A967F3982835789A0096DAFE /* SpotDetailViewController.swift in Sources */,
 				F2143ED128071106005BFA36 /* ItemsDescriptionController.swift in Sources */,
 				F246F5D3282F216600B7A1EA /* VendorOrderDetailsController.swift in Sources */,
 				F246F5D7282F248C00B7A1EA /* OrderDetailsCell.swift in Sources */,

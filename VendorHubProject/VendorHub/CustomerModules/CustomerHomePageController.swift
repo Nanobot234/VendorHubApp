@@ -17,13 +17,17 @@ import CoreLocation
 
 class CustomerHomePageController: UIViewController, UITableViewDataSource, UITableViewDelegate ,CLLocationManagerDelegate {
     
+    var distances:[String:Int] = [:]
     
+    let auth = Auth.auth()
+    let db = Firestore.firestore()
+    
+    var userLatitude:Double = 0.0
+    var userLongitude:Double = 0.0
     var vendorItems = [Model]()
     var testItems = [Model]() //will pass this as the a
     var vendorNames:[String] = []
     var vendorIDS:[String] = []
-    let auth = Auth.auth()
-    let db = Firestore.firestore()
     var imageData:Data!
     let mystoryboard = UIStoryboard(name:"CustomerUserFlow" , bundle: nil)
     let homeStoryboard = UIStoryboard(name:"Main" , bundle: nil)
@@ -58,13 +62,15 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        table.register(CollectionTableViewCell.nib(), forCellReuseIdentifier: CollectionTableViewCell.identifier)
-        table.delegate = self
-        table.dataSource = self
+
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
+            //only
+            table.register(CollectionTableViewCell.nib(), forCellReuseIdentifier: CollectionTableViewCell.identifier)
+            table.delegate = self
+            table.dataSource = self
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
@@ -86,11 +92,25 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
         
     }
     
+    
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         print("locations = \(locValue.latitude) \(locValue.longitude)")
-        //save this to databse thenn
+        
+        FirestoreOps.shared.savenewLocation(userID: (auth.currentUser?.uid)!, longitude: locValue.longitude, latitude: locValue.latitude, userType: "customer")
+        
+        self.userLatitude = locValue.latitude
+        self.userLongitude = locValue.longitude
+        
+        self.table.reloadData()
+        //save this to databse then
+        
+        //TODO: have to check if distance changes actually reloads the table view,
     }
+    
+    
+    
     
     //gets all the vendor data fornow, should marcha certain description
     func getVendorData(completed: @escaping (_ data:[Model]) -> Void) {
@@ -114,7 +134,7 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
                 
                 print("Second Here")
                 print(document.documentID)
-                self.vendorIDS.append(document.documentID) //get the ids of all the vendors
+                self.vendorIDS.append(document.documentID) //get the ids of all the vendors, will be used to get the location
                 //get the name
                 let vendorName = document.get("StoreName")
                 self.vendorNames.append(vendorName as! String)
@@ -171,6 +191,8 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
     }
     
     
+   
+    
     ///Table View Metho
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -183,9 +205,7 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
         return vendorNames.count
     }
     
-    
-    
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = table.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
@@ -196,10 +216,15 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
         //here is where it puhts items in collection viee
         
         cell.cellDelegate = self
+      
+        
+        FirestoreOps.shared.calculateLocationTimeDistance(vendorID: vendorIDS[indexPath.section], custLongitude: self.userLongitude, custLatitude: self.userLatitude) { timeDistance in
+            
+            self.distances[self.vendorIDS[indexPath.section]] = timeDistance
+          
+        }
+      
         return cell
-        
-        
-        //      return UITableViewCell()
     }
     
     //to set the title of each row of tableView
@@ -209,7 +234,19 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
         if(vendorNames.isEmpty == true) {
             return nil
         }
-        return vendorNames[section]
+        
+        print("Distances",distances)
+        
+        if(distances.keys.contains(vendorIDS[section])){
+            
+            let vendorDistance = self.vendorNames[section] + " - " + String(distances[vendorIDS[section]]!) + "min away"
+            return vendorDistance
+        }
+                    
+        
+//        var distance = ""
+           return nil
+//
     }
     
     //sets the row
@@ -246,8 +283,6 @@ struct Model {
         print(dictionary)
         
     }
-    
-    
     
 }
 

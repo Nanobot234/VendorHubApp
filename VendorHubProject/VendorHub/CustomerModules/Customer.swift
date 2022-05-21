@@ -36,7 +36,9 @@ struct cartArray: Codable {
 //will get multiple arrays representing the different items for the customer.
 struct Customer {
     
+    var vendorID:String?
     var orderNum:String
+    var CuatomerID:String?
     var vendorStoreName: String?
     var location:String? //should be used to determine distance aeay
     var customerItems = [cartItem]()
@@ -49,6 +51,9 @@ struct Customer {
         if(input["VendorName"] != nil) {
             vendorStoreName = input["VendorName"] as? String
         }
+        
+        vendorID = input["VendorID"] as? String
+    
         for (_, value) in input {
             if let array = value as? NSArray {
                 //convert the array to data for the image

@@ -8,6 +8,8 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import UIFloatLabelTextField
+
 
 
 class CustomerSignUpLoginController: UIViewController {
@@ -43,7 +45,9 @@ class CustomerSignUpLoginController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-    //initialControl()
+   // initialControl()
+        
+        
     }
     
     func initialControl() {
@@ -115,7 +119,7 @@ class CustomerSignUpLoginController: UIViewController {
                     self.CreateUserError.text = "User Already Exists With Those Credentials"
                     print("Wrong")
                 } else {
-                    self.db.collection("Customer").document((result?.user.uid)!).setData(["Name":self.customerName.text!,"Longitude":0.0, "Latitude":0.0,"accountType":"customer"], merge: true)
+                    self.db.collection("Customer").document((result?.user.uid)!).setData(["Name":self.customerName.text!,"longitude":0.0, "latitude":0.0,"accountType":"customer"], merge: true)
                     
                     self.performSegue(withIdentifier: "accountCreatedSegue", sender: self)
                     

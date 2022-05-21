@@ -15,6 +15,7 @@ target 'VendorHub' do
   pod 'Nuke', '~> 10.7'
   pod 'GooglePlaces' , '4.2.0'
   pod 'GoogleMaps' , '4.2.0'
+  pod 'UIFloatLabelTextField'
 
   target 'VendorHubTests' do
     inherit! :search_paths

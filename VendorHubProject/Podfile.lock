@@ -742,6 +742,7 @@ PODS:
   - Nuke (10.7.1)
   - PromisesObjC (2.1.0)
   - SwiftLint (0.47.0)
+  - UIFloatLabelTextField (1.2.9)
 
 DEPENDENCIES:
   - Firebase/Auth
@@ -752,6 +753,7 @@ DEPENDENCIES:
   - GooglePlaces (= 4.2.0)
   - Nuke (~> 10.7)
   - SwiftLint
+  - UIFloatLabelTextField
 
 SPEC REPOS:
   trunk:
@@ -777,6 +779,7 @@ SPEC REPOS:
     - Nuke
     - PromisesObjC
     - SwiftLint
+    - UIFloatLabelTextField
 
 SPEC CHECKSUMS:
   abseil: ebe5b5529fb05d93a8bdb7951607be08b7fa71bc
@@ -801,7 +804,8 @@ SPEC CHECKSUMS:
   Nuke: 279f17a599fd1c83cf51de5e0e1f2db143a287b0
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
   SwiftLint: d41cc46a2ae58ac6d9f26954bc89f1d72e71fdef
+  UIFloatLabelTextField: c1df7d4e688a1bd52738513f961df16f94914367
 
-PODFILE CHECKSUM: aebb3842443527fa42563ea04f06cfb7ed49ee29
+PODFILE CHECKSUM: e07dc08d595996f6693eecb505e63290e2e50fd9
 
 COCOAPODS: 1.11.2

@@ -81,7 +81,7 @@ class CustomerCartController: UIViewController {
         //order will have order number, then items as well, as an arrsy of dic
        // var orderarr = [cartItem]()
         
-        FirestoreOps.setOrderItem(customerID: auth.currentUser!.uid,iteminfo: CustomerCart.cartItems) { finished in
+        FirestoreOps.shared.setOrderItem(customerID: auth.currentUser!.uid,iteminfo: CustomerCart.cartItems) { finished in
             if finished {
                 print("Sent Items to Vendor")
                 self.CustomerCart.cartItems = []
@@ -103,7 +103,7 @@ extension CustomerCartController: UITableViewDelegate, UITableViewDataSource {
         
         cell.itemDescription?.text = CustomerCart.cartItems[indexPath.row].itemDescription
         
-        cell.itemPrice?.text = CustomerCart.cartItems[indexPath.row].itemPrice
+        cell.itemPrice?.text = "$" + CustomerCart.cartItems[indexPath.row].itemPrice
         
         
         let vendorID = CustomerCart.cartItems[indexPath.row].vendorID
