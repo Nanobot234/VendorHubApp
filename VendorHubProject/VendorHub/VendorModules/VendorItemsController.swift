@@ -81,12 +81,12 @@ class VendorItemsController: UIViewController {
         // yes action
         let yesAction = UIAlertAction(title: "Yes", style: .default) { _ in
             // replace data variable with your own data array
-            FirestoreOps.deleteVendorItem(vendorID: (self.auth.currentUser?.uid)!, itemID: self.VendorItems.Items[indexPath.row].itemID)
+            FirestoreOps.shared.deleteVendorItem(vendorID: (self.auth.currentUser?.uid)!, itemID: self.VendorItems.Items[indexPath.row].itemID)
             self.VendorItems.Items.remove(at: indexPath.row)
            self.table.deleteRows(at: [indexPath], with: .fade)
             
         }
-
+        
         alert.addAction(yesAction)
 
         // cancel action

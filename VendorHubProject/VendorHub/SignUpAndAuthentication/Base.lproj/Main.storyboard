@@ -11,9 +11,9 @@
         <!--View Controller-->
         <scene sceneID="bgz-qj-CaY">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="Smb-Qn-HQm" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="currentContext" id="Smb-Qn-HQm" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XaI-IQ-jYI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBp-5Y-luN">
@@ -36,19 +36,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwg-V0-rGD">
-                                <rect key="frame" x="132" y="548" width="151" height="79"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Go Home" cornerStyle="medium">
-                                    <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                    </backgroundConfiguration>
-                                </buttonConfiguration>
-                                <connections>
-                                    <segue destination="5Vc-I8-mc4" kind="show" id="0bW-3P-M4K"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EcC-Qo-TqX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -115,10 +102,10 @@
             </objects>
             <point key="canvasLocation" x="2738" y="778"/>
         </scene>
-        <!--SpotVendor-->
+        <!--vendorLocations-->
         <scene sceneID="mL7-zY-GjH">
             <objects>
-                <viewControllerPlaceholder storyboardName="SpotVendor" id="y6Q-Jf-Awc" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="vendorLocations" id="y6Q-Jf-Awc" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Z48-l9-RyB"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KCF-sj-9U5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -172,37 +159,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to Vendorhub" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hje-nB-avB">
-                                <rect key="frame" x="100" y="150" width="214" height="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to Vendorhub" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hje-nB-avB">
+                                <rect key="frame" x="47" y="168" width="301" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wzd-rF-axu">
-                                <rect key="frame" x="132" y="271" width="150" height="72"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="For Shopppers" cornerStyle="medium">
-                                    <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                    </backgroundConfiguration>
-                                </buttonConfiguration>
-                                <connections>
-                                    <segue destination="c8E-YQ-1aM" kind="show" id="kMj-Pl-CuF"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bt7-c3-0Dh">
-                                <rect key="frame" x="132" y="422" width="150" height="72"/>
+                                <rect key="frame" x="122" y="463" width="150" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="For Vendors" cornerStyle="medium">
+                                <buttonConfiguration key="configuration" style="plain" cornerStyle="medium">
                                     <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                        <color key="backgroundColor" red="0.68171978870000005" green="0.90599307969999998" blue="0.55332833100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </backgroundConfiguration>
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="For Vendors">
+                                            <attributes>
+                                                <font key="NSFont" size="17" name="Helvetica-Bold"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
                                 </buttonConfiguration>
                                 <connections>
                                     <segue destination="5Vc-I8-mc4" kind="show" id="yhK-8t-B7T"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wzd-rF-axu">
+                                <rect key="frame" x="122" y="288" width="150" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="For Shoppers" cornerStyle="medium">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" red="0.68171978870000005" green="0.90599307969999998" blue="0.55332833100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="c8E-YQ-1aM" kind="show" id="kMj-Pl-CuF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -213,7 +208,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3TM-k5-z5R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1391" y="378"/>
+            <point key="canvasLocation" x="-1391.304347826087" y="377.67857142857139"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="NoU-F9-eBp">
@@ -231,12 +226,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2d-S3-bp9">
-                                <rect key="frame" x="109" y="496" width="197" height="103"/>
+                                <rect key="frame" x="103" y="500" width="197" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Log In" cornerStyle="medium">
                                     <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                        <color key="backgroundColor" red="0.68171978870000005" green="0.90599307969999998" blue="0.55332833100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </backgroundConfiguration>
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="24"/>
                                 </buttonConfiguration>
@@ -245,14 +240,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WFq-2n-yvQ">
-                                <rect key="frame" x="109" y="270" width="197" height="103"/>
+                                <rect key="frame" x="103" y="282" width="209" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Create a New Account" cornerStyle="medium">
                                     <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                        <color key="backgroundColor" red="0.68171978870000005" green="0.90599307969999998" blue="0.55332833100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </backgroundConfiguration>
-                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="16"/>
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="17"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <segue destination="XTC-Dv-Ous" kind="show" id="dxl-yS-4hq"/>
@@ -276,8 +271,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Your Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pdm-cx-L37">
-                                <rect key="frame" x="106" y="222" width="203" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter Your Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pdm-cx-L37">
+                                <rect key="frame" x="106" y="212" width="220" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -285,20 +280,20 @@
                                     <action selector="emailFieldValidation:" destination="XTC-Dv-Ous" eventType="editingDidEnd" id="nHN-hJ-dEO"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Your Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sCg-E0-zsa">
-                                <rect key="frame" x="106" y="334" width="203" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Your Email" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="sCg-E0-zsa" customClass="UIFloatLabelTextField">
+                                <rect key="frame" x="106" y="324" width="220" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qLc-3w-0VX">
-                                <rect key="frame" x="106" y="454" width="203" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qLc-3w-0VX">
+                                <rect key="frame" x="106" y="454" width="220" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7kG-PM-gBI">
-                                <rect key="frame" x="106" y="558" width="203" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Confirm Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7kG-PM-gBI">
+                                <rect key="frame" x="106" y="558" width="220" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -306,19 +301,6 @@
                                     <action selector="confirmPasswordValidation:" destination="XTC-Dv-Ous" eventType="editingDidEnd" id="F0q-4A-Fnf"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2l-sZ-pa6">
-                                <rect key="frame" x="149" y="676" width="116" height="59"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Confirm" cornerStyle="medium">
-                                    <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                    </backgroundConfiguration>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="createCustomerAccount:" destination="XTC-Dv-Ous" eventType="touchUpInside" id="J3W-bk-kE5"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Required" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4mr-My-HiP">
                                 <rect key="frame" x="106" y="385" width="68" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -327,7 +309,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Required" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYs-Rr-6mL">
-                                <rect key="frame" x="106" y="600" width="68" height="21"/>
+                                <rect key="frame" x="106" y="610" width="68" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="systemRedColor"/>
@@ -340,6 +322,26 @@
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2l-sZ-pa6">
+                                <rect key="frame" x="141" y="678" width="151" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" cornerStyle="medium">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" red="0.68171978870000005" green="0.90599307969999998" blue="0.55332833100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </backgroundConfiguration>
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Confirm">
+                                            <attributes>
+                                                <font key="NSFont" size="19" name="Helvetica-Bold"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="createCustomerAccount:" destination="XTC-Dv-Ous" eventType="touchUpInside" id="J3W-bk-kE5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dLE-mQ-coF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -359,7 +361,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kEn-KH-8wf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="751" y="-485"/>
+            <point key="canvasLocation" x="750.72463768115949" y="-485.49107142857139"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="JZm-yw-sxo">
@@ -468,7 +470,7 @@
         <!--View Controller-->
         <scene sceneID="XTF-Oj-Yu8">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="5Vc-I8-mc4" customClass="ViewController" customModule="VendorHub" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5Vc-I8-mc4" customClass="ViewController" customModule="VendorHub" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZIv-a0-quW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -521,7 +523,7 @@
             <objects>
                 <viewController id="aSY-CZ-tQE" customClass="ViewController" customModule="VendorHub" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MuM-bs-lMr">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Your Store Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zbM-Qi-VKd">
@@ -579,18 +581,17 @@
                         <outlet property="vendorLogInButton" destination="8hl-Gg-pcA" id="0BM-RP-3fm"/>
                         <outlet property="vendorName" destination="zbM-Qi-VKd" id="1LD-WH-edK"/>
                         <outlet property="vendorPassword" destination="bv0-54-qCq" id="q2n-Eg-nwz"/>
-                        <segue destination="Smb-Qn-HQm" kind="show" identifier="signUp" id="xuH-sE-8oa"/>
+                        <segue destination="Smb-Qn-HQm" kind="presentation" identifier="signUp" modalPresentationStyle="automatic" id="xuH-sE-8oa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2gb-Mm-gag" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="533" y="646"/>
+            <point key="canvasLocation" x="344.92753623188406" y="657.58928571428567"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0bW-3P-M4K"/>
         <segue reference="7Ha-mc-PjB"/>
-        <segue reference="yK6-Wi-3PY"/>
+        <segue reference="3pf-md-vpz"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">

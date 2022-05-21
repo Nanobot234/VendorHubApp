@@ -26,7 +26,7 @@ class VendorOrderController: UIViewController {
         super.viewWillAppear(animated)
         
         self.customerOrders = []
-        FirestoreOps.getOrderItemsforVendor(vendorID: auth.currentUser!.uid) { ordersdata in
+        FirestoreOps.shared.getOrderItemsforVendor(vendorID: auth.currentUser!.uid) { ordersdata in
             self.customerOrders = ordersdata
             DispatchQueue.main.async {
                 self.orderTable.reloadData()
@@ -39,7 +39,7 @@ class VendorOrderController: UIViewController {
         
         orderTable.dataSource = self
         orderTable.delegate = self
-
+       
         // Do any additional setup after loading the view.
     }
     
@@ -53,7 +53,37 @@ class VendorOrderController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @objc func soldButtonPressed(_ sender: UIButton) {
+        
+        //here do an ale
+        //if time away is greater than 3, ask if your show
+        
+        let soldAlert = UIAlertController(title: nil, message: "Are You sure you've completed this order?", preferredStyle: .alert)
+        
+        //do othet things
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { _ in
+            // replace data variable with your own data array
+            let indexPath = IndexPath(row: sender.tag, section: 0)
+            FirestoreOps.shared.deleteOrderforUser(userID: (self.auth.currentUser?.uid)!, orderNum: self.customerOrders[sender.tag].orderNum, accountType: "vendor")
+            FirestoreOps.shared.deleteOrderforUser(userID: (self.auth.currentUser?.uid)!, orderNum: self.customerOrders[sender.tag].orderNum, accountType: "customer")
+            
+            self.customerOrders.remove(at: sender.tag)
+           self.orderTable.deleteRows(at: [indexPath], with: .fade)
+            
+        }
+        
+            soldAlert.addAction(yesAction)
 
+        // cancel action
+        soldAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        present(soldAlert, animated: true, completion: nil)
+    }
+
+    
+    
+    
 }
 
 
@@ -64,12 +94,20 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = orderTable.dequeueReusableCell(withIdentifier: "order", for: indexPath) as! OrderNumandDistanceCell
-        
-        
+    
         cell.orderNumLabel.text = "Order Num" + self.customerOrders[indexPath.row].orderNum
         
+        
+        cell.soldButton.backgroundColor = UIColor(red: 0.56, green: 0.93, blue: 0.56, alpha: 1.00)
         //hope to add distance label as well
+        
+        
+        
+        cell.soldButton.tag = indexPath.row
+        cell.soldButton.addTarget(self, action: #selector(self.soldButtonPressed), for: .touchUpInside)
         return cell
+        
+        
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

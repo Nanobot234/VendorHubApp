@@ -1,4 +1,4 @@
-//hjjjjldlfrbvbneejnnne
+//
 //  AppDelegate.swift
 //  VendorHub
 //
@@ -7,7 +7,6 @@
 
 import UIKit
 import Firebase
-import GooglePlaces
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
-      GMSPlacesClient.provideAPIKey(APIKeys.googlePlacesKey)
+      //GMSPlacesClient.provideAPIKey(APIKeys.googlePlacesKey)
         
         
         
