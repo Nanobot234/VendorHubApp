@@ -55,7 +55,7 @@ class MyCurrentLocationViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as! LocationListViewController
+        let destination = segue.destination as! MyLocationViewController
         destination.vendorLocations = vendorLocations
         
         
