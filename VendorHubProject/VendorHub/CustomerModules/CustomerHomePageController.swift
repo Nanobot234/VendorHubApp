@@ -28,7 +28,9 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
     var testItems = [Model]() //will pass this as the a
     var vendorNames:[String] = []
     var vendorIDS:[String] = []
+    
     var imageData:Data!
+    
     let mystoryboard = UIStoryboard(name:"CustomerUserFlow" , bundle: nil)
     let homeStoryboard = UIStoryboard(name:"Main" , bundle: nil)
     let locationManager = CLLocationManager()
@@ -51,6 +53,7 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
         self.getVendorData {data in
             print(data)
             self.testItems = data
+            print("Test Items",self.testItems.count)
             DispatchQueue.main.async {
                 self.table.reloadData()
             }
@@ -77,15 +80,16 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.table.reloadData()
+    }
     //signing out//need to USe Unwind .
     @IBAction func gotoHome(_ sender: Any) {
         do {
             try auth.signOut()
             
-            let customerChoiceVC = homeStoryboard.instantiateViewController(withIdentifier: "customerOption")
-            
-            navigationController?.pushViewController(customerChoiceVC, animated: true)
-            
+         performSegue(withIdentifier: "CustomertoHome", sender: self)
         } catch {
             print(error.localizedDescription)
         }
@@ -103,7 +107,7 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
         self.userLatitude = locValue.latitude
         self.userLongitude = locValue.longitude
         
-        self.table.reloadData()
+        
         //save this to databse then
         
         //TODO: have to check if distance changes actually reloads the table view,
@@ -116,7 +120,7 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
     func getVendorData(completed: @escaping (_ data:[Model]) -> Void) {
         //grap the dataa, first grab all documents, then look in the documents for the items collection
         //then grab all the documents under items
-        var itemsArray = [Model]()
+        var itemsArray = [Model]() //i
         db.collection("Vendor").getDocuments() { (QuerySnapshot,Error) in
             guard Error == nil else {
                 print("Error")
@@ -130,6 +134,8 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
             group.enter()
             var documentCount = QuerySnapshot?.documents.count
             var i = 0
+            
+            //looping all the vendors
             for document in QuerySnapshot!.documents {
                 
                 print("Second Here")
@@ -177,11 +183,12 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
                 return
             }
             print("Hello World")
-            print(querySnapsht!.documents.count)
+            print("Document Amount",querySnapsht!.documents.count)
             
             for document in querySnapsht!.documents {
                 
-                let model = Model(document.data())
+                //here for each item grab the id
+                let model = Model(document.data(),ItemID: document.documentID,vendorID: docID)
                 itemsArray.append(model)
             }
             completed(itemsArray)
@@ -212,41 +219,37 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
         
         cell.tableCellIndexPath = indexPath.row
         //puts the test items in the
-        cell.configure(with: testItems) //puts the items in the collectionView?
+        
+        print("Test Items",self.testItems)
+        cell.configure(with: testItems.filter({$0.vendorID == self.vendorIDS[indexPath.section]})) //puts the items in the collectionView?
         //here is where it puhts items in collection viee
         
-        cell.cellDelegate = self
-      
+                cell.cellDelegate = self
+        
         
         FirestoreOps.shared.calculateLocationTimeDistance(vendorID: vendorIDS[indexPath.section], custLongitude: self.userLongitude, custLatitude: self.userLatitude) { timeDistance in
             
             self.distances[self.vendorIDS[indexPath.section]] = timeDistance
           
+        
         }
       
         return cell
     }
-    
+
     //to set the title of each row of tableView
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         //if statement maybe if its at the end
-        
-        if(vendorNames.isEmpty == true) {
-            return nil
-        }
-        
+
+    if(vendorNames.isEmpty == true) {
+        return nil
+       }
+
         print("Distances",distances)
         
-        if(distances.keys.contains(vendorIDS[section])){
-            
-            let vendorDistance = self.vendorNames[section] + " - " + String(distances[vendorIDS[section]]!) + "min away"
-            return vendorDistance
-        }
-                    
-        
-//        var distance = ""
-           return nil
-//
+       
+       return self.vendorNames[section] + " - " + String(self.distances[self.vendorIDS[section]] ?? 0) + " min away"
+
     }
     
     //sets the row
@@ -269,18 +272,21 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
 //a structure used to display the images that are held.
 struct Model {
     var imageName: String //the url grabbed from firebse
-    
+    var vendorID: String
     var price: String = ""
     var itemDescription: String = ""
     let db = Firestore.firestore()
+    var itemID = ""
     
     
-    
-    init( _ dictionary: [String:Any]) {
+    init( _ dictionary: [String:Any],ItemID:String,vendorID:String) {
+        self.vendorID = vendorID
+        self.itemID = ItemID
         self.itemDescription = dictionary["ItemDescription"] as! String? ?? ""
         self.price = dictionary["ItemPrice"] as! String? ?? ""
         self.imageName = dictionary["Image"] as! String? ?? ""
-        print(dictionary)
+        
+      //  print(dictionary)
         
     }
     
@@ -299,12 +305,13 @@ extension CustomerHomePageController:CollectionViewCellDelegate  {
         
         itemVC.itemDescriptionText = collectionviewcell!.itemDescription
         
-        itemVC.itemPriceText = "$" + collectionviewcell!.itemPrice
+        itemVC.itemPriceText =  collectionviewcell!.itemPrice
         
         //here is the image URL,
         itemVC.imageURL = collectionviewcell!.setImageURL
         //pass the image URL
         
+        itemVC.itemID = collectionviewcell!.itemID
         
         //here the row your on, pass the id. from the row that
         let selectedIndex =  didTappedInTableViewCell.tableCellIndexPath

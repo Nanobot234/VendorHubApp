@@ -107,9 +107,11 @@ extension MyLocationViewController: GMSAutocompleteViewControllerDelegate {
     
     // Handle the user's selection.
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        print("Place name: \(place.name)")
-        print("Place ID: \(place.placeID)")
-        print("Place attributions: \(place.attributions)")
+
+        print("Place name: \(String(describing: place.name))")
+        print("Place ID: \(String(describing: place.placeID))")
+        print("Place attributions: \(String(describing: place.attributions))")
+
         
         let newLocation = VendorLocation(address: place.formattedAddress ?? "unknown place", latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
         vendorLocations.append(newLocation)

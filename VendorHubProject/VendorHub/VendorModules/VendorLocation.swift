@@ -2,10 +2,13 @@
 //  VendorLocation.swift
 //  VendorHub
 //
-//  Created by Dimitar Krastev on 5/5/22.
+
+//  Created by Nana Bonsu on 5/21/22.
 //
 
 import Foundation
+
+
 import CoreLocation
 import FirebaseFirestore
 import FirebaseDatabase

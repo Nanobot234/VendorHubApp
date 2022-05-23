@@ -13,17 +13,22 @@ class ItemPriceDescriptionController: UIViewController {
 
     @IBOutlet weak var selectedImage:UIImageView!
     
+    @IBOutlet weak var quantityPicker: UIPickerView!
+    
+    
     @IBOutlet weak var itemDescriptionLabel: UILabel!
     @IBOutlet weak var itemPriceLabel: UILabel!
     var itemDescriptionText = ""
-    var itemPriceText = ""
+    var itemPriceText = ""  //string value of text
     var auth = Auth.auth()
     
     @IBOutlet weak var AddtoCartButton: UIButton!
     var vendorID = ""
     var imageURL = ""
+    var itemID = ""
     var image = UIImage()
-    
+    var quanityItems = ["1","2","3","4","5"]
+    var selectedQuantity = ""
     //in here, will hold the item price, description, and the vendorID as well
     
     
@@ -31,7 +36,7 @@ class ItemPriceDescriptionController: UIViewController {
         super.viewWillAppear(animated)
         
         itemDescriptionLabel.text = itemDescriptionText
-        itemPriceLabel.text = itemPriceText
+        itemPriceLabel.text = "$" + itemPriceText
         
     }
     
@@ -43,6 +48,9 @@ class ItemPriceDescriptionController: UIViewController {
         print(vendorID)
         //shouldnt be eimp
         print(imageURL)
+        
+        quantityPicker.dataSource = self
+        quantityPicker.delegate = self
         // Do any additional setup after loading the view.
         
         itemDescriptionLabel.layer.borderWidth = 0.25
@@ -73,9 +81,14 @@ class ItemPriceDescriptionController: UIViewController {
        
         //now s
         let imageString = selectedImage.image?.pngData()
+        
+        
         //this is item that your choosinf
         let currentItem = cartItem(vendorID: self.vendorID,
-                                   itemImage: imageString, imageURL: imageURL, itemDescription: self.itemDescriptionLabel.text!, itemPrice: self.itemPriceLabel.text!)
+                                   itemImage: imageString, imageURL: imageURL, itemDescription: self.itemDescriptionLabel.text!, itemPrice: self.itemPriceText,quantity: self.selectedQuantity)
+        
+        //make a
+        //here check, if the current itrem ID
         var cartArray:cartArray = cartArray()
         if(userDefaults.valueExists(forKey: userID) == false) {
             //create an new array of type cart item, then add it
@@ -105,4 +118,27 @@ class ItemPriceDescriptionController: UIViewController {
     }
     */
 
+}
+
+
+extension ItemPriceDescriptionController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+        //different sections of picker view
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        quanityItems.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return String(quanityItems[row])
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.selectedQuantity = self.quanityItems[row] as String
+    }
+    
+    
+    
 }

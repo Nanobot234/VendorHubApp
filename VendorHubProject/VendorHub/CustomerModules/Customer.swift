@@ -23,7 +23,7 @@ struct cartItem: Codable {
     var itemDescription:String
     var itemPrice:String
     var itemID:String?//this will the itemID in the vendor storage
-    
+    var quantity:String?
 }
 
 struct cartArray: Codable {
@@ -38,7 +38,7 @@ struct Customer {
     
     var vendorID:String?
     var orderNum:String
-    var CuatomerID:String?
+    var CustomerID:String?
     var vendorStoreName: String?
     var location:String? //should be used to determine distance aeay
     var customerItems = [cartItem]()
@@ -51,6 +51,8 @@ struct Customer {
         if(input["VendorName"] != nil) {
             vendorStoreName = input["VendorName"] as? String
         }
+        
+        CustomerID = input["customerID"] as? String
         
         vendorID = input["VendorID"] as? String
     

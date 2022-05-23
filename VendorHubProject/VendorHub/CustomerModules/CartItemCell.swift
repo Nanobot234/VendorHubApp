@@ -18,6 +18,7 @@ class CartItemCell: UITableViewCell {
     
     @IBOutlet weak var StoreName: UILabel!
     
+
     //itemDescription.layer.borderWidth = 2.0
     
     override func awakeFromNib() {
@@ -40,6 +41,9 @@ class CartItemCell: UITableViewCell {
         
         itemImage.layer.cornerRadius = 5.0
     }
+
+    @IBOutlet weak var QuanityLabel: UILabel!
+//Maye change due to conflict
     
     
 }
