@@ -20,4 +20,26 @@ class CustomerOrderDetailsCell: UITableViewCell {
     @IBOutlet weak var itemQuantity: UILabel!
     
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+        
+        itemPrice.layer.borderWidth = 0.25
+        itemPrice.layer.cornerRadius = 5.0
+        
+        itemQuantity.layer.borderWidth = 0.25
+        itemQuantity.layer.cornerRadius = 5.0
+        
+        
+        
+        itemImage.layer.cornerRadius = 5.0
+    }
+    
+    
 }

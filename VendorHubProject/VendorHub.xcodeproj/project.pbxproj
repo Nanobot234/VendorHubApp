@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		06AA97049D5C73075AB9A2A2 /* Pods_VendorHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FCBF4FB036B25C32F8BAA42 /* Pods_VendorHub.framework */; };
 		A950891A2839CC85001CAA3C /* VendorLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95089192839CC85001CAA3C /* VendorLocation.swift */; };
+		A950891C283B13DE001CAA3C /* TempTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A950891B283B13DE001CAA3C /* TempTableViewCell.swift */; };
 		A967F39A2835DAC40096DAFE /* MyLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A967F3992835DAC40096DAFE /* MyLocationViewController.swift */; };
 		A967F39E2835F0B40096DAFE /* MyCurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A967F39D2835F0B40096DAFE /* MyCurrentLocationViewController.swift */; };
 		BC5FA7E748E94CFD1DCC4641 /* Pods_VendorHub_VendorHubUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDC91627E5FC3F700F7F0D75 /* Pods_VendorHub_VendorHubUITests.framework */; };
@@ -80,6 +81,7 @@
 		8F1C9CB7C99C77CB1010AFD3 /* Pods-VendorHubTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VendorHubTests.release.xcconfig"; path = "Target Support Files/Pods-VendorHubTests/Pods-VendorHubTests.release.xcconfig"; sourceTree = "<group>"; };
 		8FCBF4FB036B25C32F8BAA42 /* Pods_VendorHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VendorHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A95089192839CC85001CAA3C /* VendorLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorLocation.swift; sourceTree = "<group>"; };
+		A950891B283B13DE001CAA3C /* TempTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempTableViewCell.swift; sourceTree = "<group>"; };
 		A967F393283562CF0096DAFE /* VendorLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorLocation.swift; sourceTree = "<group>"; };
 		A967F3992835DAC40096DAFE /* MyLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationViewController.swift; sourceTree = "<group>"; };
 		A967F39D2835F0B40096DAFE /* MyCurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCurrentLocationViewController.swift; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 				F246F5D6282F248B00B7A1EA /* OrderDetailsCell.swift */,
 				A967F39D2835F0B40096DAFE /* MyCurrentLocationViewController.swift */,
 				A967F3992835DAC40096DAFE /* MyLocationViewController.swift */,
+				A950891B283B13DE001CAA3C /* TempTableViewCell.swift */,
 			);
 			path = VendorModules;
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 				F2A00C0027D42C270068024F /* SceneDelegate.swift in Sources */,
 				F2143ED128071106005BFA36 /* ItemsDescriptionController.swift in Sources */,
 				F246F5D3282F216600B7A1EA /* VendorOrderDetailsController.swift in Sources */,
+				A950891C283B13DE001CAA3C /* TempTableViewCell.swift in Sources */,
 				F246F5D7282F248C00B7A1EA /* OrderDetailsCell.swift in Sources */,
 				A950891A2839CC85001CAA3C /* VendorLocation.swift in Sources */,
 				F2CDDFB327F93856000434BB /* ItemPriceDescriptionController.swift in Sources */,
