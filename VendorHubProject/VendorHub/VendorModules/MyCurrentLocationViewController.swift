@@ -66,11 +66,13 @@ class MyCurrentLocationViewController: UIViewController {
         updateFomInterface()
         
         if let currentuser = (auth.currentUser?.uid), let vendorName = nameTextField.text, let vendorAddress = addressTextField.text {
+
             db.collection("Vendor").document(currentuser).setData(["address": vendorAddress, "latiude": vendorLocation.latitude, "longitude": vendorLocation.longitude], merge: true)
             
         
     }
     
     }
+
 
 }

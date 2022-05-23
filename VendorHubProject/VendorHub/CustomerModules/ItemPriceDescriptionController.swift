@@ -53,6 +53,18 @@ class ItemPriceDescriptionController: UIViewController {
         quantityPicker.delegate = self
         // Do any additional setup after loading the view.
         
+        itemDescriptionLabel.layer.borderWidth = 0.25
+        itemDescriptionLabel.layer.cornerRadius = 5.0
+        
+        itemPriceLabel.layer.borderWidth = 0.25
+        itemPriceLabel.layer.cornerRadius = 5.0
+        
+        
+        
+        selectedImage.layer.cornerRadius = 5.0
+        
+        
+        
     }
     
     // In this function the current item is added to the cart

@@ -40,6 +40,16 @@ class ItemsDescriptionController: UIViewController {
 
         // Do any additional setup after loading the view.
         
+//        itemPrice.layer.borderWidth = 0.25
+//        itemPrice.layer.cornerRadius = 5.0
+        
+        itemDescription.layer.borderWidth = 0.25
+        itemDescription.layer.cornerRadius = 5.0
+        
+        
+        
+        itemImage.layer.cornerRadius = 5.0
+        
         
        
     }

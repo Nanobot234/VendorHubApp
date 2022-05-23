@@ -2,10 +2,12 @@
 //  VendorLocation.swift
 //  VendorHub
 //
+
 //  Created by Nana Bonsu on 5/21/22.
 //
 
 import Foundation
+
 
 import CoreLocation
 import FirebaseFirestore
@@ -37,4 +39,5 @@ class VendorLocation: NSObject, Codable {
     }
     
 }
+
 
