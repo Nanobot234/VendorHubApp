@@ -122,9 +122,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gnV-30-crM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-
             <point key="canvasLocation" x="2102.898550724638" y="2095.9821428571427"/>
-
         </scene>
         <!--Vendor Order Details Controller-->
         <scene sceneID="1Zr-KF-iR3">
@@ -557,9 +555,7 @@
         <scene sceneID="h20-Pc-EBo">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aOb-tc-j4d" sceneMemberID="viewController">
-
                     <tabBarItem key="tabBarItem" title="Location" selectedImage="paperplane" catalog="system" id="vOZ-o6-WBa"/>
-
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Gt-c8-02m">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -576,11 +572,10 @@
         </scene>
     </scenes>
     <resources>
-
         <image name="archivebox" catalog="system" width="128" height="106"/>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="arrow.up.bin" catalog="system" width="128" height="93"/>
         <image name="paperplane" catalog="system" width="128" height="118"/>
-
         <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
