@@ -6,7 +6,7 @@ target 'VendorHub' do
   use_frameworks!
 
   # Pods for VendorHub
- # pod 'Firebase/Core'
+ pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'

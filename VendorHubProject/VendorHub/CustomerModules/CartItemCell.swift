@@ -18,5 +18,7 @@ class CartItemCell: UITableViewCell {
     
     @IBOutlet weak var StoreName: UILabel!
     
+    @IBOutlet weak var QuanityLabel: UILabel!
+    
     
 }

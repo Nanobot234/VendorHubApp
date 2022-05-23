@@ -85,7 +85,21 @@ class FirestoreOps {
         completed(true)
     }
     
-    
+    //idea is on a completed order put it in the customer completed order, then also the vendor completed or
+//    
+//    func setCompletedOrder(vendorID:String,custID:String,orderNum:String,items:[cartItem]) {
+//        
+//        let itemPlace = UUID().uuidString.prefix(3)
+//        
+//        
+//    
+//        var itemArray = [String]()
+//        
+//        itemArray.append(items)
+//        db.collection("Vendor").document(vendorID).collection("Past Orders").document(orderNum).setData([String(itemPlace): ], merge: <#T##Bool#>)
+//        
+//    }
+//    
     
     
     //or make array of customers?
@@ -103,13 +117,20 @@ class FirestoreOps {
                 print("Error with items")
                 return
             }
+            
+            //shows new things only
+            snapshot?.documentChanges.forEach({ change in
+                if(change.type == .added) {
+                    let newCustomer = Customer(input: change.document.data() , CustorderNum: change.document.documentID)
+                    customerArray.append(newCustomer)
+                    completed(customerArray)
+                    
+                }
+            })
             //now loop through the orders, and create the cusotmer objects
-            for document in snapshot!.documents {
-                let newCustomer = Customer(input: document.data() , CustorderNum: document.documentID)
-                customerArray.append(newCustomer)
-            }
+        
                 //will get a dictonaryw with
-            completed(customerArray)
+           
         }
         
     }
@@ -184,8 +205,32 @@ class FirestoreOps {
     //basically will look at changes to the customer location database,if so will get the coordinate values, the
     //with those values, you calculate the time distance, to th
     
+    //maybe chnage to the coordinayes
     
-    //func checkCusttomerDistance(vend)
+    
+    func checkCustomerDistance(vendLat:Double,vendLong:Double,customerID:String,completed:@escaping (_ timeDistance:Int) -> Void) {
+        
+        db.collection("Customer").document(customerID).getDocument { snapshot, error in
+            
+            let customerLatitude = snapshot?.get("latitude") as! Double
+            let customerLongitude = snapshot?.get("longitude")  as! Double
+            
+            let customerLocation = CLLocation(latitude: customerLatitude, longitude: customerLongitude)
+            
+            let vendorLocation = CLLocation(latitude: vendLat, longitude: vendLong)
+            
+            let distance = vendorLocation.distance(from: customerLocation) / 1000
+            
+            let averageSpeed = 1.42
+            let timetoCustomer = Int(distance/averageSpeed)
+            
+            completed(timetoCustomer)
+        }
+            
+         
+        }
+        
+    
     
 
     

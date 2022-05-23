@@ -20,6 +20,7 @@ class CollectionViewCell: UICollectionViewCell{
     var tablecellindex = 0;
     //the URL of the image to pass on
     var setImageURL = ""
+    var itemID = ""
    //  var viewController:CustomerHomePageController = CustomerHomePageController(nibName: nil, bundle: nil)
    
     static let indentifier = "CollectionViewCell"
@@ -45,7 +46,7 @@ class CollectionViewCell: UICollectionViewCell{
         self.setImageURL = model.imageName
         self.itemDescription = model.itemDescription
         self.myImage.contentMode =  .scaleAspectFill
-        
+        self.itemID = model.itemID
         
     }
    

@@ -22,6 +22,9 @@ class VendorOrderController: UIViewController {
     
     let auth = Auth.auth()
     
+    var vendorCoordinates = [Double]()
+    var custDistances:[String:Int] = [:]  //distances for all the orders you have
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -35,15 +38,36 @@ class VendorOrderController: UIViewController {
         }
     }
     override func viewDidLoad() {
-        super.viewDidLoad()
+    
+        //get the vendor coordinates from the database
         
-        orderTable.dataSource = self
-        orderTable.delegate = self
+        FirestoreOps.shared.getVendorLocationCoordinates(vendorID: auth.currentUser!.uid)
+        { vendID in
+            
+            super.viewDidLoad()
+            
+            self.orderTable.dataSource = self
+            self.orderTable.delegate = self
+           
+            print("Coordinates",vendID)
+            self.vendorCoordinates = vendID
+        }
+        
        
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        DispatchQueue.main.async {
+            self.orderTable.reloadData()
+        }
+       
     }
     
 
+    @IBAction func RefreshPressed(_ sender: Any) {
+        self.orderTable.reloadData()
+    }
     /*
     // MARK: - Navigation
 
@@ -92,10 +116,23 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
      return self.customerOrders.count
     }
 
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        FirestoreOps.shared.checkCustomerDistance(vendLat: self.vendorCoordinates[1], vendLong: self.vendorCoordinates[0], customerID: self.customerOrders[indexPath.row].CustomerID!) { timeDistance in
+            
+            //setting each distance of custoemr in proper spot
+            print("CustomerOrder",self.customerOrders[indexPath.row].CustomerID!)
+            self.custDistances[self.customerOrders[indexPath.row].CustomerID!] = timeDistance
+            
+        }
+        
         let cell = orderTable.dequeueReusableCell(withIdentifier: "order", for: indexPath) as! OrderNumandDistanceCell
     
-        cell.orderNumLabel.text = "Order Num" + self.customerOrders[indexPath.row].orderNum
+        cell.orderNumLabel.text = "Order Num: " + self.customerOrders[indexPath.row].orderNum
+        
+        
+        cell.distanceAwayLabel.text = String(self.custDistances[self.customerOrders[indexPath.row].CustomerID!] ?? 0) + " min away"
         
         
         cell.soldButton.backgroundColor = UIColor(red: 0.56, green: 0.93, blue: 0.56, alpha: 1.00)
@@ -105,13 +142,21 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
         
         cell.soldButton.tag = indexPath.row
         cell.soldButton.addTarget(self, action: #selector(self.soldButtonPressed), for: .touchUpInside)
+        
+        let customerID = self.customerOrders[indexPath.row].CustomerID!
+        
+        
+        
+     
+        
+        
         return cell
         
         
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 100
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -57,9 +57,16 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cAJ-OR-oPI">
                                                     <rect key="frame" x="315" y="14" width="72" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="0.078431372550000003" green="0.79215686269999996" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.68171978870000005" green="0.90599307969999998" blue="0.55332833100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" title="Sold"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="Sold" cornerStyle="medium">
+                                                        <backgroundConfiguration key="background"/>
+                                                    </buttonConfiguration>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="soldButtonPressed:" destination="RzN-lL-IOA" eventType="touchUpInside" id="8Vj-UC-YNj"/>
                                                     </connections>
@@ -101,7 +108,13 @@
                             <constraint firstItem="l3V-OE-7eO" firstAttribute="trailing" secondItem="vxt-3a-Z1V" secondAttribute="trailing" id="aX6-Ui-4EC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Current Orders" largeTitleDisplayMode="always" id="vHY-ie-hNc"/>
+                    <navigationItem key="navigationItem" title="Current Orders" largeTitleDisplayMode="always" id="vHY-ie-hNc">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="arrow.clockwise" catalog="system" id="qf2-Xk-Zrw">
+                            <connections>
+                                <action selector="RefreshPressed:" destination="RzN-lL-IOA" id="WQb-GO-h6Z"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="orderTable" destination="vxt-3a-Z1V" id="7t4-Qy-Qm7"/>
                         <segue destination="iew-Yb-tc6" kind="presentation" id="r9c-aU-b5w"/>
@@ -196,7 +209,6 @@
                         <tabBarAppearance key="standardAppearance"/>
                     </tabBar>
                     <connections>
-
                         <segue destination="BjC-JB-jbC" kind="relationship" relationship="viewControllers" id="WmS-5s-5s1"/>
                         <segue destination="Mqb-Vd-5d1" kind="relationship" relationship="viewControllers" id="KdK-9C-jg2"/>
                         <segue destination="aOb-tc-j4d" kind="relationship" relationship="viewControllers" id="gbV-MG-PlU"/>
@@ -521,13 +533,11 @@
             </objects>
             <point key="canvasLocation" x="2666.666666666667" y="507.58928571428567"/>
         </scene>
-
         <!--My Items-->
         <scene sceneID="ybh-eo-LdU">
             <objects>
                 <navigationController modalPresentationStyle="fullScreen" id="Mqb-Vd-5d1" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Items" id="QhN-RW-yWG"/>
-
                     <navigationItem key="navigationItem" id="GSo-Ql-nHy"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kwc-0p-3by">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -562,6 +572,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -571,6 +582,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

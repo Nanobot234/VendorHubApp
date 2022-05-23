@@ -15,15 +15,17 @@ class CustomerCartController: UIViewController {
     let auth = Auth.auth()
     //in this classwill
     @IBOutlet weak var cartTable: UITableView!
-    
+    let userDefaults = UserDefaults.standard
+    var userID = ""
     @IBOutlet weak var PlaceOrderButton: UIBarButtonItem!
+    
+    
     override func viewWillAppear(_ animated: Bool) {
-        let userDefaults = UserDefaults.standard
+       
         //show something if you have cart data only
         
-        let userID = (auth.currentUser?.uid)!
-        
-        
+      
+         userID = (auth.currentUser?.uid)!
         if(userDefaults.valueExists(forKey: userID) == true) {
             CustomerCart.cartItems = userDefaults.decodeCartData(key: userID)!
             self.cartTable.reloadData()
@@ -84,7 +86,11 @@ class CustomerCartController: UIViewController {
         FirestoreOps.shared.setOrderItem(customerID: auth.currentUser!.uid,iteminfo: CustomerCart.cartItems) { finished in
             if finished {
                 print("Sent Items to Vendor")
+                
+                //write an empty array back into the userDefaults
+                self.CustomerCart.cartItems = self.userDefaults.decodeCartData(key: self.userID)!
                 self.CustomerCart.cartItems = []
+                self.userDefaults.encodeCartData(data: self.CustomerCart.cartItems, key: self.userID)
                 self.cartTable.reloadData()
             }
         }
@@ -105,8 +111,18 @@ extension CustomerCartController: UITableViewDelegate, UITableViewDataSource {
         
         cell.itemPrice?.text = "$" + CustomerCart.cartItems[indexPath.row].itemPrice
         
+        //label
         
-        let vendorID = CustomerCart.cartItems[indexPath.row].vendorID
+        cell.QuanityLabel.text = "Quantity: " + CustomerCart.cartItems[indexPath.row].quantity!
+        
+        
+        let vendorID = CustomerCart.cartItems[indexPath.row].vendorID!
+        
+        
+        FirestoreOps.shared.getVendorName(vendorID: vendorID) { name in
+            cell.StoreName.text = name
+        }
+        
       //  let vendorName = FirestoreOps.getVendorName(vendorID: vendorID)
        // print(vendorName)
        // cell.StoreName?.text = vendorName
@@ -115,7 +131,7 @@ extension CustomerCartController: UITableViewDelegate, UITableViewDataSource {
         let imageData = CustomerCart.cartItems[indexPath.row].itemImage
         
         //this image is created from the image that you set the collectionView to
-        cell.itemImage.image = UIImage(data: imageData!)
+        cell.itemImage.image = UIImage(data:imageData!)
         
         return cell
     }

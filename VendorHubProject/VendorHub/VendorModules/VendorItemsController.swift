@@ -36,6 +36,8 @@ class VendorItemsController: UIViewController {
         
     }
     
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         //need to chheck if there are any documents here...
         super.viewDidAppear(animated)
@@ -50,6 +52,7 @@ class VendorItemsController: UIViewController {
     }
 
     
+ 
     @IBAction func VendroSignOut(_ sender: Any) {
         
         do {
@@ -103,6 +106,7 @@ class VendorItemsController: UIViewController {
 extension VendorItemsController:UITableViewDelegate,UITableViewDataSource {
    
     
+    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return VendorItems.Items.count
@@ -114,6 +118,9 @@ extension VendorItemsController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ table: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = table.dequeueReusableCell(withIdentifier:"cell",for: indexPath) as? ItemDisplayCell {
             cell.DescriptionLabel?.text = VendorItems.Items[indexPath.row].itemDescription
+            
+            cell.layer.cornerRadius = 10
+            cell.layer.masksToBounds = true
             
             
             print(cell.DescriptionLabel.text!)

@@ -55,7 +55,7 @@ class MyCurrentLocationViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as! LocationListViewController
+        let destination = segue.destination as! MyLocationViewController
         destination.vendorLocations = vendorLocations
         
         
@@ -66,20 +66,11 @@ class MyCurrentLocationViewController: UIViewController {
         updateFomInterface()
         
         if let currentuser = (auth.currentUser?.uid), let vendorName = nameTextField.text, let vendorAddress = addressTextField.text {
-            db.collection("Vendor").document(currentuser).collection("Locations").addDocument(data: ["name": vendorName, "address": vendorAddress, "latiude": vendorLocation.latitude, "longtitude": vendorLocation.longitude]) { (error) in
-                if let e = error {
-                    print("For some reason the data can not be saved to the cloud! \(e)")
-                } else {
-                    print ("The data was saved succesfully!")
-                }
-            }
+            db.collection("Vendor").document(currentuser).setData(["address": vendorAddress, "latiude": vendorLocation.latitude, "longitude": vendorLocation.longitude], merge: true)
             
-        }
-        
         
     }
     
-
-    
+    }
 
 }
