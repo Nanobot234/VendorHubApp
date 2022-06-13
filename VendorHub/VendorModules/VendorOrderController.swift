@@ -87,7 +87,7 @@ class VendorOrderController: UIViewController {
         //if time away is greater than 3, ask if your show
         
         let soldAlert = UIAlertController(title: nil, message: "Are You sure you've completed this order?", preferredStyle: .alert)
-        
+    
         //do othet things
         let yesAction = UIAlertAction(title: "Yes", style: .default) { _ in
             // replace data variable with your own data array
