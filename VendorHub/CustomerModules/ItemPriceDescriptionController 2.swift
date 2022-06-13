@@ -8,7 +8,6 @@
 import UIKit
 
 import Firebase
-import Toast_Swift
 //cklass to show to show the item selected by Customer, when the user taps on a collectioNVie
 class ItemPriceDescriptionController: UIViewController {
 
@@ -54,11 +53,11 @@ class ItemPriceDescriptionController: UIViewController {
         quantityPicker.delegate = self
         // Do any additional setup after loading the view.
         
-//        itemDescriptionLabel.layer.borderWidth = 0.25
-//        itemDescriptionLabel.layer.cornerRadius = 5.0
-//
-//        itemPriceLabel.layer.borderWidth = 0.25
-//        itemPriceLabel.layer.cornerRadius = 5.0
+        itemDescriptionLabel.layer.borderWidth = 0.25
+        itemDescriptionLabel.layer.cornerRadius = 5.0
+        
+        itemPriceLabel.layer.borderWidth = 0.25
+        itemPriceLabel.layer.cornerRadius = 5.0
         
         
         
@@ -86,7 +85,7 @@ class ItemPriceDescriptionController: UIViewController {
         
         //this is item that your choosinf
         let currentItem = cartItem(vendorID: self.vendorID,
-                                   itemImage: imageString, imageURL: imageURL, itemDescription: self.itemDescriptionLabel.text!, itemPrice: self.itemPriceText,quantity: self.selectedQuantity ?? "0")
+                                   itemImage: imageString, imageURL: imageURL, itemDescription: self.itemDescriptionLabel.text!, itemPrice: self.itemPriceText,quantity: self.selectedQuantity)
         
         //make a
         //here check, if the current itrem ID
@@ -101,7 +100,7 @@ class ItemPriceDescriptionController: UIViewController {
             userDefaults.encodeCartData(data: cartArray.cartItems, key: userID)
         }
         
-        self.view.makeToast("Added to Cart")
+        print(cartArray)
         
         
        

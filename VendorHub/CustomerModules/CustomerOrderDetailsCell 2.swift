@@ -29,12 +29,12 @@ class CustomerOrderDetailsCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-//        
-//        itemPrice.layer.borderWidth = 0.25
-//        itemPrice.layer.cornerRadius = 5.0
-//        
-//        itemQuantity.layer.borderWidth = 0.25
-//        itemQuantity.layer.cornerRadius = 5.0
+        
+        itemPrice.layer.borderWidth = 0.25
+        itemPrice.layer.cornerRadius = 5.0
+        
+        itemQuantity.layer.borderWidth = 0.25
+        itemQuantity.layer.cornerRadius = 5.0
         
         
         

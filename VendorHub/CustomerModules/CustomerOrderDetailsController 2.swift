@@ -46,15 +46,9 @@ extension CustomerOrderDetailsController:UITableViewDataSource, UITableViewDeleg
         
         let image = self.myItems[indexPath.row].imageURL
         
-        cell.itemPrice.text = "Price " + "$" + self.myItems[indexPath.row].itemPrice
+        cell.itemPrice.text = "Price " + self.myItems[indexPath.row].itemPrice
         
-        if(self.myItems[indexPath.row].quantity == "") {
-            cell.itemQuantity.text = "Quantity " + "1"
-        } else {
-            cell.itemQuantity.text = "Quanity " + self.myItems[indexPath.row].quantity!
-        }
-      
-                                            
+        cell.itemQuantity.text = "Quanity " + self.myItems[indexPath.row].quantity!
         cell.itemImage.setImage(image)
         
         return cell

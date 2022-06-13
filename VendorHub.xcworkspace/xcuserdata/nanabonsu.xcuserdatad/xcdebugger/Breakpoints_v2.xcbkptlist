@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "767FE80D-7274-4B06-A470-A43158DC2CE7"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "69BF406D-A479-4889-A3F5-A07701E6F050"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VendorHub/VendorLocationFiles/ItemsDescriptionController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "uploadVendorItems(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "07E1643D-35BA-4C22-A137-04A1B5B7063E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VendorHub/VendorModules/ItemsDescriptionController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "uploadVendorItems(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "74CA2FE4-831B-438B-8C44-43D2CE56673F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VendorHub/VendorModules/VendorItemsController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "VendorItemsController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "74CA2FE4-831B-438B-8C44-43D2CE56673F - 70b32de0e9daeb79"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VendorHub.VendorItemsController.table.getter : Swift.Optional&lt;__C.UITableView&gt;"
+                  moduleName = "VendorHub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nanabonsu/Documents/VendorHubApp/VendorHubProject/VendorHub/VendorModules/VendorItemsController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "85">
+               </Location>
+               <Location
+                  uuid = "74CA2FE4-831B-438B-8C44-43D2CE56673F - 812274f5990775"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VendorHub.VendorItemsController.table.setter : Swift.Optional&lt;__C.UITableView&gt;"
+                  moduleName = "VendorHub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nanabonsu/Documents/VendorHubApp/VendorHubProject/VendorHub/VendorModules/VendorItemsController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "136">
+               </Location>
+               <Location
+                  uuid = "74CA2FE4-831B-438B-8C44-43D2CE56673F - 2c5c0287096f08b4"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VendorHub.VendorItemsController.table.modify : Swift.Optional&lt;__C.UITableView&gt;"
+                  moduleName = "VendorHub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nanabonsu/Documents/VendorHubApp/VendorHubProject/VendorHub/VendorModules/VendorItemsController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "74CA2FE4-831B-438B-8C44-43D2CE56673F - 1819706517794f5e"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VendorHub.VendorItemsController.table.modify : Swift.Optional&lt;__C.UITableView&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "VendorHub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nanabonsu/Documents/VendorHubApp/VendorHubProject/VendorHub/VendorModules/VendorItemsController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "26">
+               </Location>
+               <Location
+                  uuid = "74CA2FE4-831B-438B-8C44-43D2CE56673F - ed8c8d20a4b103fc"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VendorHub.VendorItemsController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; VendorHub.VendorItemsController"
+                  moduleName = "VendorHub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nanabonsu/Documents/VendorHubApp/VendorHubProject/VendorHub/VendorModules/VendorItemsController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "306">
+               </Location>
+               <Location
+                  uuid = "74CA2FE4-831B-438B-8C44-43D2CE56673F - 5d5629e3ba60e7f3"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VendorHub.VendorItemsController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;VendorHub.VendorItemsController&gt;"
+                  moduleName = "VendorHub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nanabonsu/Documents/VendorHubApp/VendorHubProject/VendorHub/VendorModules/VendorItemsController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "263">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F6F132B6-16D4-4C97-A836-FA630416A6B9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VendorHub/CustomerModules/CustomerHomePageController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "getVendorData(completed:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "05EE32E5-14AF-47CE-BE38-0A8B7C5CA310"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VendorHub/CustomerModules/CustomerHomePageController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "329"
+            endingLineNumber = "329"
+            landmarkName = "collectionView(collectionviewcell:index:didTappedInTableViewCell:sectionNum:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "200D6389-5307-4C2D-AC06-735351F13386"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VendorHub/CustomerModules/CustomerHomePageController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
+            landmarkName = "tableView(_:titleForHeaderInSection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "02B20EB3-A62F-4E25-9C2A-5EB124C35501"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VendorHub/CustomerModules/CustomerHomePageController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
+            landmarkName = "tableView(_:titleForHeaderInSection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DB665D38-AF16-4702-9707-663AF66DD398"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VendorHub/FirestoreOps.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "338"
+            endingLineNumber = "338"
+            landmarkName = "calculateLocationTimeDistance(vendorID:custLongitude:custLatitude:completed:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8EF28152-B94A-416C-9AE4-FBDD001ED526"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VendorHub/FirestoreOps.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "350"
+            endingLineNumber = "350"
+            landmarkName = "calculateLocationTimeDistance(vendorID:custLongitude:custLatitude:completed:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CF3F9A1B-D3BC-48B2-93E5-261C79FD9F64"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VendorHub/FirestoreOps.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "setOrderItem(customerID:iteminfo:completed:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

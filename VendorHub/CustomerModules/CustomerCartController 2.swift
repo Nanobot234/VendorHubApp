@@ -7,7 +7,6 @@
 
 import UIKit
 import Firebase
-import Toast_Swift
 
 class CustomerCartController: UIViewController {
 
@@ -89,11 +88,9 @@ class CustomerCartController: UIViewController {
                 print("Sent Items to Vendor")
                 
                 //write an empty array back into the userDefaults
-                
                 self.CustomerCart.cartItems = self.userDefaults.decodeCartData(key: self.userID)!
                 self.CustomerCart.cartItems = []
                 self.userDefaults.encodeCartData(data: self.CustomerCart.cartItems, key: self.userID)
-                self.view.makeToast("Order Placed With Vendors")
                 self.cartTable.reloadData()
             }
         }
@@ -113,6 +110,8 @@ extension CustomerCartController: UITableViewDelegate, UITableViewDataSource {
         cell.itemDescription?.text = CustomerCart.cartItems[indexPath.row].itemDescription
         
         cell.itemPrice?.text = "$" + CustomerCart.cartItems[indexPath.row].itemPrice
+        
+        //label
         
         cell.QuanityLabel.text = "Quantity: " + CustomerCart.cartItems[indexPath.row].quantity!
         

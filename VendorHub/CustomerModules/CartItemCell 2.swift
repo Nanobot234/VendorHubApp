@@ -30,14 +30,14 @@ class CartItemCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-//        itemDescription.layer.borderWidth = 0.25
-//        itemDescription.layer.cornerRadius = 5.0
-//        
-//        itemPrice.layer.borderWidth = 0.25
-//        itemPrice.layer.cornerRadius = 5.0
-//        
-//        StoreName.layer.borderWidth = 0.25
-//        StoreName.layer.cornerRadius = 5.0
+        itemDescription.layer.borderWidth = 0.25
+        itemDescription.layer.cornerRadius = 5.0
+        
+        itemPrice.layer.borderWidth = 0.25
+        itemPrice.layer.cornerRadius = 5.0
+        
+        StoreName.layer.borderWidth = 0.25
+        StoreName.layer.cornerRadius = 5.0
         
         itemImage.layer.cornerRadius = 5.0
     }

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="J5T-b6-lZg" customClass="CollectionViewCell" customModule="VendorHub" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="245"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uDr-KX-bGh">
+                <rect key="frame" x="0.0" y="0.0" width="250" height="245"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7YZ-ky-Huz">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="245"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="245" id="Swh-KR-918"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Yko-Gd-Dsy"/>
+                            <constraint firstAttribute="width" constant="250" id="wIx-uR-dQN"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="7YZ-ky-Huz" secondAttribute="bottom" id="9Ue-bn-zvb"/>
+                    <constraint firstItem="7YZ-ky-Huz" firstAttribute="leading" secondItem="uDr-KX-bGh" secondAttribute="leading" id="Dh9-Xm-Rb4"/>
+                    <constraint firstItem="7YZ-ky-Huz" firstAttribute="top" secondItem="uDr-KX-bGh" secondAttribute="top" id="F8f-Nv-IaQ"/>
+                    <constraint firstItem="7YZ-ky-Huz" firstAttribute="centerY" secondItem="uDr-KX-bGh" secondAttribute="centerY" id="FZT-kh-obS"/>
+                    <constraint firstAttribute="bottom" secondItem="7YZ-ky-Huz" secondAttribute="bottom" id="G5L-3z-xj8"/>
+                    <constraint firstAttribute="trailing" secondItem="7YZ-ky-Huz" secondAttribute="trailing" id="Nho-Yx-8wn"/>
+                    <constraint firstItem="7YZ-ky-Huz" firstAttribute="centerX" secondItem="uDr-KX-bGh" secondAttribute="centerX" id="cMj-yT-vkU"/>
+                    <constraint firstAttribute="trailing" secondItem="7YZ-ky-Huz" secondAttribute="trailing" id="fbD-ZY-he0"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <size key="customSize" width="250" height="245"/>
+            <connections>
+                <outlet property="myImage" destination="7YZ-ky-Huz" id="nvQ-fq-koU"/>
+            </connections>
+            <point key="canvasLocation" x="297.10144927536237" y="116.85267857142857"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
