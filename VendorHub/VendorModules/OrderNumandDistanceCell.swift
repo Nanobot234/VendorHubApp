@@ -18,4 +18,6 @@ class OrderNumandDistanceCell: UITableViewCell {
 
     @IBOutlet weak var orderTotal: UILabel!
     
+
+    
 }

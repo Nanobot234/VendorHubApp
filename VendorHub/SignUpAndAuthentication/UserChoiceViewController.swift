@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import Firebase
+
 
 class UserChoiceViewController: UIViewController {
 
+    let userAuth = Auth.auth()
     
     override func viewDidAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
@@ -23,6 +26,11 @@ class UserChoiceViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if(userAuth.currentUser?.uid != nil) {
+            print("Signed in")
+        }
+        
+        
         
     }
     
@@ -38,5 +46,7 @@ class UserChoiceViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+
 
 }

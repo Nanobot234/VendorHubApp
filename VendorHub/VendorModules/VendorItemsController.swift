@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import CoreLocation
 class VendorItemsController: UIViewController {
     
     let db = Firestore.firestore()
@@ -20,19 +21,21 @@ class VendorItemsController: UIViewController {
     @IBOutlet weak var TableViewEdit: UIBarButtonItem!
     
     @IBOutlet weak var addItem: UIBarButtonItem!
+   
+    
+    
+    
     
     override func viewDidLoad() {
        
         super.viewDidLoad()
-      //  if(auth.currentUser != nil){Progress}
-        // Do any additional setup after loading the view.
-        //no cnnection to table view omgggg
+     
         VendorItems = Vendor()
         table.delegate = self
         table.dataSource = self
         //table.rowHeight = UITableView.automaticDimension
       
-        
+        print(auth.currentUser!.uid)
         
     }
     
@@ -53,18 +56,28 @@ class VendorItemsController: UIViewController {
 
     
  
-    @IBAction func VendroSignOut(_ sender: Any) {
+    @IBAction func VendorSignOut(_ sender: Any) {
         
         do {
             try auth.signOut()
-            performSegue(withIdentifier: "unwindtoHome", sender: self)
+            //performSegue(withIdentifier: "unwindtoHome", sender: self)
+            let storyboard = UIStoryboard(name:"Main", bundle: nil)
+
+            let signOutView = storyboard.instantiateViewController(withIdentifier: "customerOption")
+            
+            self.tabBarController?.tabBar.isHidden = true
+            
+            navigationController?.pushViewController(signOutView, animated: true)
+            
+            
         } catch {
             print(error.localizedDescription)
         }
        
     }
+
     
-    //when b
+    //following function is response code for whenthe edit button is pressed on the vendor home screen
     @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
         
         if table.isEditing {
@@ -77,6 +90,8 @@ class VendorItemsController: UIViewController {
                    addItem.isEnabled = false
                }
            }
+    
+    
     
     func deleteItemCheck(indexPath: IndexPath) {
         let alert = UIAlertController(title: nil, message: "Are you sure you'd like to delete this item", preferredStyle: .alert)
@@ -146,3 +161,6 @@ extension VendorItemsController:UITableViewDelegate,UITableViewDataSource {
    
 }
 
+
+extension VendorItemsController:CLLocationManagerDelegate {
+}

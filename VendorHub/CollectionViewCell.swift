@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+// NOTE::::  this class just defines the cellm, not the whole view controller
+
 
 class CollectionViewCell: UICollectionViewCell{
     

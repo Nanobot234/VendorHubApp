@@ -13,7 +13,7 @@ import CoreLocation
 
 
 class FirestoreOps {
-    static let shared = FirestoreOps()
+    static let shared = FirestoreOps() //use this as a singeton 
     
      var db = Firestore.firestore()
     var auth = Auth.auth()
@@ -21,6 +21,49 @@ class FirestoreOps {
      var vendorCoordinates = [Double]()
      var timeDistance = 0
     
+    func getAccountType(userID:String,completed:@escaping (String) -> Void) {
+        
+        //actually can search if collection has that id!
+        isVendor(userID: userID) { result in
+            if(result == true) {
+                completed("Vendor")
+            } else {
+                completed("Customer")
+            }
+        }
+        
+        //tgry both accountt ypes
+    }
+//
+    
+    //function to check whe
+    func isVendor(userID:String,completed:@escaping (Bool) -> Void) {
+    
+            //following closure checks whether the ID is in the vendor part o databse. If so then thats good
+        
+        
+        db.collection("Vendor").document(userID).getDocument { docSnapshot, err in
+            
+        
+            if(err == nil) {
+              completed(true)
+            } else {
+                completed(false)
+            }
+        }
+        
+    
+//    db.collection("cities").whereField("capital", isEqualTo: true)
+//        .getDocuments() { (querySnapshot, err) in
+//            if let err = err {
+//                print("Error getting documents: \(err)")
+//            } else {
+//                for document in querySnapshot!.documents {
+//                    print("\(document.documentID) => \(document.data())")
+//                }
+//            }
+//    }
+}
      func getVendorName(vendorID:String,completed:@escaping (String) -> Void)  {
       
     
@@ -74,7 +117,7 @@ class FirestoreOps {
                  //now you save the items belonging to that vendor to the dicitionary value
                  vendorOrders[vendorID] = vendorItems.cartItems
              } else {
-                 var items = vendorOrders[vendorID]
+                 var items = vendorOrders[vendorID] //array of VendorItems
                  items?.append(item)
                  vendorOrders[vendorID] = items!
              }

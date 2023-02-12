@@ -89,6 +89,8 @@ class ItemsDescriptionController: UIViewController, UITextViewDelegate, UITextFi
     }
     
     //when you tap the upload button
+    
+    //from tutorial , with image pciker, iOS aademy!!
     @IBAction func ChooseImage() {
        
         present(ImagePickerController, animated: true)
@@ -131,7 +133,6 @@ class ItemsDescriptionController: UIViewController, UITextViewDelegate, UITextFi
       
     }
 
-    
     func sendtoFirestore(_ imageId: UUID, completed:@escaping (Bool) -> Void) {
         
         let currentuser = (auth.currentUser?.uid)!

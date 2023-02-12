@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -18,11 +19,46 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` v]instead).
         guard let _ = (scene as? UIWindowScene) else { return }
         
-       //  let storyboard = UIStoryboard(name:"vendorLocations", bundle: nil)
+        let auth = Auth.auth()
+
+        if(auth.currentUser?.uid != nil) {
+        FirestoreOps.shared.getAccountType(userID: auth.currentUser!.uid) { res in
+            if(res == "Vendor"){
+                let storyboard = UIStoryboard(name:"vendorLocations", bundle: nil)
+               
+                               //tabBar
+                let initialView = storyboard.instantiateViewController(withIdentifier: "vendorItemsList")
+                
+                self.window?.rootViewController = initialView
+            } else if(res == "Customer") {
+                let storyboard = UIStoryboard(name:"CustomerUserFlow", bundle: nil)
+               
+                               //tabBar
+                let customerInitialView = storyboard.instantiateViewController(withIdentifier: "vendorItemsView")
+                
+                self.window?.rootViewController = customerInitialView
+            }
+        }
+        } else {
+            //chose the starting storyboard
+        }
         
-        //let initialView = storyboard.instantiateViewController(withIdentifier: "vendorItemsList")
         
-      //  window?.rootViewController = initialView
+//        if(auth.currentUser?.uid != nil) {
+//            //go to the correct window
+//
+//              let storyboard = UIStoryboard(name:"vendorLocations", bundle: nil)
+//
+//
+//                //tabBar
+//             let initialView = storyboard.instantiateViewController(withIdentifier: "vendorItemsList")
+//
+//            window?.rootViewController = initialView
+//
+//            //probably change this!!
+//        }
+        
+        //
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -8,11 +8,15 @@
 import UIKit
 import Firebase
 import GooglePlaces
+import FirebaseAuth
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    
+    var window:UIWindow?
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -21,6 +25,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
       GMSPlacesClient.provideAPIKey(APIKeys.googlePlacesKey)
+        
+        let auth = Auth.auth()
+        
+     
+     
+        
+        //  let storyboard = UIStoryboard(name:"vendorLocations", bundle: nil)
+         
+         //let initialView = storyboard.instantiateViewController(withIdentifier: "vendorItemsList")
+         
+       //  window?.rootViewController = initialView
+        
         
         
         

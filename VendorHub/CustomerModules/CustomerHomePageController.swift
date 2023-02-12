@@ -13,9 +13,12 @@ import simd
 import MapKit
 import CoreLocation
 
-//need to make a function that grabs those images, anfd then!!!
+/// Controller  that manages the contents of the inital view that the customner sees, displaying the nearby vendors!!
 
 class CustomerHomePageController: UIViewController, UITableViewDataSource, UITableViewDelegate ,CLLocationManagerDelegate {
+
+    
+    
     
     var distances:[String:Int] = [:]
     
@@ -30,12 +33,11 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
     var vendorIDS:[String] = []
     var pathArray:[IndexPath] = []
     var imageData:Data!
-    
     let mystoryboard = UIStoryboard(name:"CustomerUserFlow" , bundle: nil)
     let homeStoryboard = UIStoryboard(name:"Main" , bundle: nil)
     let locationManager = CLLocationManager()
     var imagetoSend:UIImage!
-    
+   
     
     @IBOutlet var table: UITableView!
     // var itemController:CustomerHomePageController
@@ -44,8 +46,9 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+      
         
-        // self.vendorNames = []
+        
         self.testItems = []
         self.vendorNames = []
         
@@ -65,12 +68,13 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
             //only
+            
             table.register(CollectionTableViewCell.nib(), forCellReuseIdentifier: CollectionTableViewCell.identifier)
             table.delegate = self
             table.dataSource = self
@@ -78,132 +82,25 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
+        
+        auth.addStateDidChangeListener { authentic, user in
+            if user != nil {
+                print("User is logged in")
+            } else {
+                self.performSegue(withIdentifier: "CustomertoHome", sender: self)
+            }
+        }
     }
     
     
     override func viewDidAppear(_ animated: Bool) {
         self.table.reloadData()
     }
-    //signing out//need to USe Unwind .
-    @IBAction func gotoHome(_ sender: Any) {
-        do {
-            try auth.signOut()
-            
-         performSegue(withIdentifier: "CustomertoHome", sender: self)
-        } catch {
-            print(error.localizedDescription)
-        }
-        
-    }
-    
-    
-    
-    @IBAction func refreshVendors(_ sender: Any) {
-        self.table.reloadData()
-    }
-    
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
-        
-        FirestoreOps.shared.savenewLocation(userID: (auth.currentUser?.uid)!, longitude: locValue.longitude, latitude: locValue.latitude, userType: "customer")
-        
-        self.userLatitude = locValue.latitude
-        self.userLongitude = locValue.longitude
-        
-        
-        //save this to databse then
-        
-        //TODO: have to check if distance changes actually reloads the table view,
-    }
-    
-    
-    
-    
-    //gets all the vendor data fornow, should marcha certain description
-    func getVendorData(completed: @escaping (_ data:[Model]) -> Void) {
-        //grap the dataa, first grab all documents, then look in the documents for the items collection
-        //then grab all the documents under items
-        var itemsArray = [Model]() //i
-        db.collection("Vendor").getDocuments() { (QuerySnapshot,Error) in
-            guard Error == nil else {
-                print("Error")
-                return
-            }
-            
-            let group = DispatchGroup()
-            
-            //   group.enter()
-            //looping through all the vendors that youve gotten
-            group.enter()
-            var documentCount = QuerySnapshot?.documents.count
-            var i = 0
-            
-            //looping all the vendors
-            for document in QuerySnapshot!.documents {
-                
-                print("Second Here")
-                print(document.documentID)
-                self.vendorIDS.append(document.documentID) //get the ids of all the vendors, will be used to get the location
-                //get the name
-                let vendorName = document.get("StoreName")
-                self.vendorNames.append(vendorName as! String)
-                
-                self.getVendorItems(document.documentID) { data in
-                    i += 1
-                    print("Vendor Items Completion")
-                    itemsArray.append(contentsOf: data)
-                    
-                  
-                    print("i \(i)")
-                    print("Document Count: \(documentCount!)")
-                  
-                    //make sure i and doccount are the same
-                    if(i == documentCount!) {
-                   group.leave()
-                    }
-                    
-                }
-        
-            }
 
-            print("Completed Here")
-            group.notify(queue : DispatchQueue.global()) {
-                print("Items grabbed")
-                completed(itemsArray)
-            }
-        }
-    }
-    
-    //get the vendor items for the specified vendor
-    func getVendorItems(_ docID: String, completed: @escaping (_ data:[Model]) -> Void) {
-        
-        var itemsArray = [Model]()
-        
-        //check whether the path exists
-        self.db.collection("Vendor").document(docID).collection("Items").getDocuments { querySnapsht, Error in
-            guard Error == nil else {
-                print("Error with Items")
-                return
-            }
-            print("Hello World")
-            print("Document Amount",querySnapsht!.documents.count)
-            
-            for document in querySnapsht!.documents {
-                
-                //here for each item grab the id
-                let model = Model(document.data(),ItemID: document.documentID,vendorID: docID)
-                itemsArray.append(model)
-            }
-            completed(itemsArray)
-        }
-        
-        
-    }
     
     
-   
+
+    
     
     ///Table View Metho
     
@@ -216,30 +113,34 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
     func numberOfSections(in tableView: UITableView) -> Int {
         return vendorNames.count
         
-   
+        
         
         
     }
     
-
+    //this method makes each cell, be a collectionView Cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = table.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
+        let cell = table.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell //now each cell inside is a collectionTableView Cell
         
-        //here yu make the index Path
-    
         
-      //  cell.tableCellIndexPath =
-        //puts the test items in the
+        //TODO: Need to check if I can a aparamter to the selector function. Reason for this is to pass the info from the selected row to the next new controller https://stackoverflow.com/questions/24814646/attach-parameter-to-button-addtarget-action-in-swift
         
+        
+        
+        
+        //Debuging print line here
         print("Test Items",self.testItems)
-        cell.configure(with: testItems.filter({$0.vendorID == self.vendorIDS[indexPath.section]}))
+        
+        
+        //configure the cell that  has collectionView with the desired items
+        cell.configure(with: testItems.filter({$0.vendorID == self.vendorIDS[indexPath.section]})) //this filter statement configures the cell with the correct vendorID, by doing so loads the correct items as well, items being an array
         
         
         //puts the items in the collectionView?
         //here is where it puhts items in collection viee
         
-                cell.cellDelegate = self
+        cell.cellDelegate = self
         
         
         print("Section Number",indexPath.section)
@@ -247,57 +148,67 @@ class CustomerHomePageController: UIViewController, UITableViewDataSource, UITab
         let indexPath = IndexPath(row: indexPath.section, section: cell.tableCellIndexPath)
         //so at each row, you know that you hava an inde
         
-        if(pathArray.contains(indexPath) == false) {
-            pathArray.append(indexPath)
-        }
         
-        print(pathArray)
+        
+        
+        //calculting the distance for each cell
+        
+        // closure... calculates the time in minutes that the vendcor is away for the customer. then saves it
         FirestoreOps.shared.calculateLocationTimeDistance(vendorID: vendorIDS[indexPath.section], custLongitude: self.userLongitude, custLatitude: self.userLatitude) { timeDistance in
             
             self.distances[self.vendorIDS[indexPath.section]] = timeDistance
-          
-        
+            
+            
         }
-      
-        return cell
-    }
-
-    //to set the title of each row of tableView
-   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        //if statement maybe if its at the end
-
-    if(vendorNames.isEmpty == true) {
-        return nil
-       }
-
-      
-        print("Distances",distances)
         
-       
-       return self.vendorNames[section] + " - " + String(self.distances[self.vendorIDS[section]] ?? 0) + " min away"
+            cell.AllItemsButton.Items = testItems.filter({$0.vendorID == self.vendorIDS[indexPath.section]}) //gives the button in each cell this items array, corrsponding to the vendot that its on
+            
+        cell.AllItemsButton.addTarget(self, action: #selector(self.TableRowButton), for: .touchUpInside)
+            
+    
+            return cell
+        }
+        
+        //to set the title of each row of tableView
+        func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+            //if statement maybe if its at the end
+            
+            if(vendorNames.isEmpty == true) {
+                return nil
+            }
+            
+            print("Distances",distances)
+    
+            return self.vendorNames[section] + " - " + String(self.distances[self.vendorIDS[section]] ?? 0) + " min away"
+            
+        }
+        //sets the row
+        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            return 250.0
+        }
+   
+    
+    
+    
+        
 
-    }
-    
-    //sets the row
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250.0
-    }
     
 
-    //Collection View inside a table view
+ 
     
     
-    //But will need  page where to upload items, or can mually do i
-    
-    
-    //this ia going to be the image that we are getting from firebase, for the ros
-    
-    
-    
+   
+
 }
 
+////Outside of the ViewController class
 
-//a structure used to display the images that are held.
+/*
+ A struct object that holds the data for each item of the vendor
+ */
+
+
+
 struct Model {
     var imageName: String //the url grabbed from firebse
     var vendorID: String
@@ -314,59 +225,67 @@ struct Model {
         self.price = dictionary["ItemPrice"] as! String? ?? ""
         self.imageName = dictionary["Image"] as! String? ?? ""
         
-      //  print(dictionary)
+        //  print(dictionary)
         
     }
+    
     
 }
 
-extension CustomerHomePageController:CollectionViewCellDelegate  {
-    
-    func collectionView(collectionviewcell: CollectionViewCell?, index: Int, didTappedInTableViewCell: CollectionTableViewCell,sectionNum:Int) {
+    extension CustomerHomePageController:CollectionViewCellDelegate  {
         
-        
-        let itemVC = storyboard?.instantiateViewController(withIdentifier: "imageDetailsView") as! ItemPriceDescriptionController
-        
-        itemVC.image = (collectionviewcell?.myImage.image)!
-        //also set the image url, that will be saved..
-        
-        
-        itemVC.itemDescriptionText = collectionviewcell!.itemDescription
-        
-        itemVC.itemPriceText =  collectionviewcell!.itemPrice
-        
-       
-        //here is the image URL,
-        itemVC.imageURL = collectionviewcell!.setImageURL
-        //pass the image URL
-        
-        itemVC.itemID = collectionviewcell!.itemID
-    
-        
-        var tableRowIndex = 0
-        
-        for path in pathArray {
-            //if you are
-            if(path.section == didTappedInTableViewCell.tableCellIndexPath) {
-                tableRowIndex = path.row
+        ///
+        ///Following fucntioj deals with tapping on the cell
+        ///
+        //collection View cell is the cell that is tapped on.
+        func collectionView(collectionviewcell: CollectionViewCell?, index: Int, didTappedInTableViewCell: CollectionTableViewCell,sectionNum:Int) {
+            
+            
+            let itemVC = storyboard?.instantiateViewController(withIdentifier: "imageDetailsView") as! ItemPriceDescriptionController
+            
+            itemVC.image = (collectionviewcell?.myImage.image)!
+            //also set the image url, that will be saved..
+            
+            
+            itemVC.itemDescriptionText = collectionviewcell!.itemDescription
+            
+            itemVC.itemPriceText =  collectionviewcell!.itemPrice
+            
+            
+            //here is the image URL,
+            itemVC.imageURL = collectionviewcell!.setImageURL
+            //pass the image URL
+            
+            itemVC.itemID = collectionviewcell!.itemID
+            
+            
+            var tableRowIndex = 0
+            
+            for path in pathArray {
+                //if you are
+                if(path.section == didTappedInTableViewCell.tableCellIndexPath) {
+                    tableRowIndex = path.row
+                }
             }
+            // print("CurrIndex",selectedIndex!)
+            //sets the vendor id here
+            
+            print("ItemIndex",collectionviewcell!.tablecellindex)
+            
+            print("CollectionItemIndex",didTappedInTableViewCell.tableCellIndexPath)
+            
+            //  print("SectionNum",sectionNum)
+            itemVC.vendorID = collectionviewcell!.vendorID
+            
+            //then get the current price
+            navigationController?.pushViewController(itemVC, animated: true)
+            //to pass the correct item description will take the
+            
         }
-       // print("CurrIndex",selectedIndex!)
-        //sets the vendor id here
         
-        print("ItemIndex",collectionviewcell!.tablecellindex)
-        
-        print("CollectionItemIndex",didTappedInTableViewCell.tableCellIndexPath)
-        
-      //  print("SectionNum",sectionNum)
-        itemVC.vendorID = collectionviewcell!.vendorID
-        
-        //then get the current price
-        navigationController?.pushViewController(itemVC, animated: true)
-        //to pass the correct item description will take the
         
     }
     
+  
     
-}
 

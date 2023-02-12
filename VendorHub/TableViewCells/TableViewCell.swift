@@ -12,11 +12,18 @@ import UIKit
 
 class CollectionTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    //the identifier given to the item ins storyboard!!
     static let identifier = "CollectionTableViewCell"
+    
+    
     var tableCellIndexPath = 0
+ 
+    
     @IBOutlet weak var mycollectionView: UICollectionView!
     
-        //images will go here to load
+    @IBOutlet weak var AllItemsButton: allItemsButton!
+    
+    //images will go here to load
     var vendorItems = [Model]()
     
     var cellDelegate: CollectionViewCellDelegate?
@@ -26,6 +33,7 @@ class CollectionTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollec
         return UINib(nibName: "TableViewCell", bundle: nil)
     }
 
+        //this sets up the Ui from the nip class!!
     override func awakeFromNib() {
         super.awakeFromNib() //get an excplkanation for thi
         
@@ -43,11 +51,13 @@ class CollectionTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollec
     }
     
     
-    
+    //functtion that confiugues the vendorItmes arraty, with the model(data) array passed  into it!
     func configure(with models: [Model]) {
         self.vendorItems = models
         mycollectionView.reloadData() //incase of problems?
     }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return vendorItems.count
@@ -73,7 +83,10 @@ class CollectionTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollec
        
         //make the
         }
-        
+    
+    
+    
+
       //  cell.myImage.addGestureRecognizer(tapGesture)
         
         
@@ -84,9 +97,12 @@ class CollectionTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollec
         return CGSize(width: 200, height: 200)
     }
     
+    //probabbly will perform the segue here!!
     
+
+
     
-  
+        
     
     //create  table vieww cell
 }

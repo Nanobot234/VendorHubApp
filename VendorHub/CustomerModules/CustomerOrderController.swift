@@ -72,6 +72,7 @@ class CustomerOrderController: UIViewController {
     
 }
 
+//tableView functions to control
 extension CustomerOrderController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        return self.myOrders.count
@@ -90,6 +91,8 @@ extension CustomerOrderController: UITableViewDataSource, UITableViewDelegate {
         
         cell.getVendorDirections.tag = indexPath.row
         
+        
+        //get directions to the place
         cell.getVendorDirections.addTarget(self, action: #selector(self.directionButtonPressed), for: .touchUpInside)
         
         return cell
